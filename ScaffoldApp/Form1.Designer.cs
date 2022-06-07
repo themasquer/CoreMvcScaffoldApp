@@ -30,7 +30,7 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.tbUserPath = new System.Windows.Forms.TextBox();
-            this.bUpdate = new System.Windows.Forms.Button();
+            this.bUpdateInterface = new System.Windows.Forms.Button();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.bBrowse = new System.Windows.Forms.Button();
             this.bReset = new System.Windows.Forms.Button();
@@ -44,6 +44,7 @@
             this.bDbContext = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
+            this.bUpdateAbstractClass = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -63,17 +64,17 @@
             this.tbUserPath.Size = new System.Drawing.Size(671, 23);
             this.tbUserPath.TabIndex = 1;
             // 
-            // bUpdate
+            // bUpdateInterface
             // 
-            this.bUpdate.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.bUpdate.ForeColor = System.Drawing.Color.Red;
-            this.bUpdate.Location = new System.Drawing.Point(139, 41);
-            this.bUpdate.Name = "bUpdate";
-            this.bUpdate.Size = new System.Drawing.Size(276, 23);
-            this.bUpdate.TabIndex = 2;
-            this.bUpdate.Text = "Update Modified Files Without DbContext";
-            this.bUpdate.UseVisualStyleBackColor = true;
-            this.bUpdate.Click += new System.EventHandler(this.bUpdate_Click);
+            this.bUpdateInterface.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.bUpdateInterface.ForeColor = System.Drawing.Color.Red;
+            this.bUpdateInterface.Location = new System.Drawing.Point(12, 41);
+            this.bUpdateInterface.Name = "bUpdateInterface";
+            this.bUpdateInterface.Size = new System.Drawing.Size(403, 23);
+            this.bUpdateInterface.TabIndex = 2;
+            this.bUpdateInterface.Text = "Update Modified Files Without DbContext Using Interface";
+            this.bUpdateInterface.UseVisualStyleBackColor = true;
+            this.bUpdateInterface.Click += new System.EventHandler(this.bUpdateInterface_Click);
             // 
             // bBrowse
             // 
@@ -98,7 +99,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 122);
+            this.label2.Location = new System.Drawing.Point(12, 133);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(162, 15);
             this.label2.TabIndex = 5;
@@ -106,7 +107,7 @@
             // 
             // tbControllerPath
             // 
-            this.tbControllerPath.Location = new System.Drawing.Point(180, 119);
+            this.tbControllerPath.Location = new System.Drawing.Point(180, 130);
             this.tbControllerPath.Name = "tbControllerPath";
             this.tbControllerPath.ReadOnly = true;
             this.tbControllerPath.Size = new System.Drawing.Size(711, 23);
@@ -114,7 +115,7 @@
             // 
             // bControllerOpen
             // 
-            this.bControllerOpen.Location = new System.Drawing.Point(897, 119);
+            this.bControllerOpen.Location = new System.Drawing.Point(897, 130);
             this.bControllerOpen.Name = "bControllerOpen";
             this.bControllerOpen.Size = new System.Drawing.Size(75, 23);
             this.bControllerOpen.TabIndex = 7;
@@ -125,7 +126,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 151);
+            this.label3.Location = new System.Drawing.Point(12, 162);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(134, 15);
             this.label3.TabIndex = 8;
@@ -133,7 +134,7 @@
             // 
             // tbViewPath
             // 
-            this.tbViewPath.Location = new System.Drawing.Point(180, 148);
+            this.tbViewPath.Location = new System.Drawing.Point(180, 159);
             this.tbViewPath.Name = "tbViewPath";
             this.tbViewPath.ReadOnly = true;
             this.tbViewPath.Size = new System.Drawing.Size(711, 23);
@@ -141,7 +142,7 @@
             // 
             // bViewOpen
             // 
-            this.bViewOpen.Location = new System.Drawing.Point(897, 148);
+            this.bViewOpen.Location = new System.Drawing.Point(897, 159);
             this.bViewOpen.Name = "bViewOpen";
             this.bViewOpen.Size = new System.Drawing.Size(75, 23);
             this.bViewOpen.TabIndex = 10;
@@ -195,11 +196,24 @@
             this.label5.TabIndex = 14;
             this.label5.Text = "If the problem is not solved, update Visual Studio with Visual Studio Installer.";
             // 
+            // bUpdateAbstractClass
+            // 
+            this.bUpdateAbstractClass.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.bUpdateAbstractClass.ForeColor = System.Drawing.Color.Red;
+            this.bUpdateAbstractClass.Location = new System.Drawing.Point(12, 70);
+            this.bUpdateAbstractClass.Name = "bUpdateAbstractClass";
+            this.bUpdateAbstractClass.Size = new System.Drawing.Size(403, 23);
+            this.bUpdateAbstractClass.TabIndex = 15;
+            this.bUpdateAbstractClass.Text = "Update Modified Files Without DbContext Using Abstract Class";
+            this.bUpdateAbstractClass.UseVisualStyleBackColor = true;
+            this.bUpdateAbstractClass.Click += new System.EventHandler(this.bUpdateAbstractClass_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 281);
+            this.Controls.Add(this.bUpdateAbstractClass);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.bDbContext);
@@ -212,7 +226,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.bReset);
             this.Controls.Add(this.bBrowse);
-            this.Controls.Add(this.bUpdate);
+            this.Controls.Add(this.bUpdateInterface);
             this.Controls.Add(this.tbUserPath);
             this.Controls.Add(this.label1);
             this.Name = "Form1";
@@ -227,7 +241,7 @@
 
         private Label label1;
         private TextBox tbUserPath;
-        private Button bUpdate;
+        private Button bUpdateInterface;
         private FolderBrowserDialog folderBrowserDialog1;
         private Button bBrowse;
         private Button bReset;
@@ -241,5 +255,6 @@
         private Button bDbContext;
         private Label label4;
         private Label label5;
+        private Button bUpdateAbstractClass;
     }
 }
