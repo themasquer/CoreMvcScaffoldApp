@@ -45,6 +45,7 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.bUpdateAbstractClass = new System.Windows.Forms.Button();
+            this.bUpdateAllAbstractClass = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -99,7 +100,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 133);
+            this.label2.Location = new System.Drawing.Point(12, 154);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(162, 15);
             this.label2.TabIndex = 5;
@@ -107,7 +108,7 @@
             // 
             // tbControllerPath
             // 
-            this.tbControllerPath.Location = new System.Drawing.Point(180, 130);
+            this.tbControllerPath.Location = new System.Drawing.Point(180, 151);
             this.tbControllerPath.Name = "tbControllerPath";
             this.tbControllerPath.ReadOnly = true;
             this.tbControllerPath.Size = new System.Drawing.Size(711, 23);
@@ -115,7 +116,7 @@
             // 
             // bControllerOpen
             // 
-            this.bControllerOpen.Location = new System.Drawing.Point(897, 130);
+            this.bControllerOpen.Location = new System.Drawing.Point(897, 151);
             this.bControllerOpen.Name = "bControllerOpen";
             this.bControllerOpen.Size = new System.Drawing.Size(75, 23);
             this.bControllerOpen.TabIndex = 7;
@@ -126,7 +127,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(12, 162);
+            this.label3.Location = new System.Drawing.Point(12, 183);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(134, 15);
             this.label3.TabIndex = 8;
@@ -134,7 +135,7 @@
             // 
             // tbViewPath
             // 
-            this.tbViewPath.Location = new System.Drawing.Point(180, 159);
+            this.tbViewPath.Location = new System.Drawing.Point(180, 180);
             this.tbViewPath.Name = "tbViewPath";
             this.tbViewPath.ReadOnly = true;
             this.tbViewPath.Size = new System.Drawing.Size(711, 23);
@@ -142,7 +143,7 @@
             // 
             // bViewOpen
             // 
-            this.bViewOpen.Location = new System.Drawing.Point(897, 159);
+            this.bViewOpen.Location = new System.Drawing.Point(897, 180);
             this.bViewOpen.Name = "bViewOpen";
             this.bViewOpen.Size = new System.Drawing.Size(75, 23);
             this.bViewOpen.TabIndex = 10;
@@ -208,11 +209,24 @@
             this.bUpdateAbstractClass.UseVisualStyleBackColor = true;
             this.bUpdateAbstractClass.Click += new System.EventHandler(this.bUpdateAbstractClass_Click);
             // 
+            // bUpdateAllAbstractClass
+            // 
+            this.bUpdateAllAbstractClass.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.bUpdateAllAbstractClass.ForeColor = System.Drawing.Color.Red;
+            this.bUpdateAllAbstractClass.Location = new System.Drawing.Point(12, 99);
+            this.bUpdateAllAbstractClass.Name = "bUpdateAllAbstractClass";
+            this.bUpdateAllAbstractClass.Size = new System.Drawing.Size(403, 23);
+            this.bUpdateAllAbstractClass.TabIndex = 16;
+            this.bUpdateAllAbstractClass.Text = "Update All Modified Files Without DbContext Using Abstract Class";
+            this.bUpdateAllAbstractClass.UseVisualStyleBackColor = true;
+            this.bUpdateAllAbstractClass.Click += new System.EventHandler(this.bUpdateAllAbstractClass_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 281);
+            this.Controls.Add(this.bUpdateAllAbstractClass);
             this.Controls.Add(this.bUpdateAbstractClass);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -256,5 +270,6 @@
         private Label label4;
         private Label label5;
         private Button bUpdateAbstractClass;
+        private Button bUpdateAllAbstractClass;
     }
 }
