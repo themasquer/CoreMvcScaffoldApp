@@ -89,7 +89,7 @@ namespace @Model.ControllerNamespace
     var closeCurlyBraceLine = "}";
     var modelStateLine = "ModelState.AddModelError(\"\", result.Message);";
     var viewBagLine = "//ViewBag.Message = result.Message; // End message in service with '.' for success, '!' for danger Bootstrap CSS classes to be used in the View";
-    var listCountLine = "ViewBag.Message = " + Model.ModelVariable + "List.Count == 0 ? \"No records found!\" : " + Model.ModelVariable + "List.Count == 1 ? \"1 record found.\" : \"" + Model.ModelVariable + "List.Count records found.\";";
+    var listCountLine = "ViewBag.Message = " + Model.ModelVariable + "List.Count == 0 ? \"No records found!\" : " + Model.ModelVariable + "List.Count == 1 ? \"1 record found.\" : " + Model.ModelVariable + "List.Count + \" records found.\";";
     var itemNotFoundLine = "ViewBag.Message = \"Record not found!\";";
 }
     public class @Model.ControllerName : Controller
