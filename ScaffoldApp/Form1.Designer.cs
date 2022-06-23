@@ -69,11 +69,11 @@
             // 
             this.bUpdateInterface.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.bUpdateInterface.ForeColor = System.Drawing.Color.Red;
-            this.bUpdateInterface.Location = new System.Drawing.Point(12, 41);
+            this.bUpdateInterface.Location = new System.Drawing.Point(12, 99);
             this.bUpdateInterface.Name = "bUpdateInterface";
             this.bUpdateInterface.Size = new System.Drawing.Size(403, 23);
             this.bUpdateInterface.TabIndex = 2;
-            this.bUpdateInterface.Text = "Update Modified Files Without DbContext Using Interface";
+            this.bUpdateInterface.Text = "Update Modified Files Using Service Interface";
             this.bUpdateInterface.UseVisualStyleBackColor = true;
             this.bUpdateInterface.Click += new System.EventHandler(this.bUpdateInterface_Click);
             // 
@@ -205,7 +205,7 @@
             this.bUpdateAbstractClass.Name = "bUpdateAbstractClass";
             this.bUpdateAbstractClass.Size = new System.Drawing.Size(403, 23);
             this.bUpdateAbstractClass.TabIndex = 15;
-            this.bUpdateAbstractClass.Text = "Update Modified Files Without DbContext Using Abstract Class";
+            this.bUpdateAbstractClass.Text = "Update Modified Files Using Abstract Service Class";
             this.bUpdateAbstractClass.UseVisualStyleBackColor = true;
             this.bUpdateAbstractClass.Click += new System.EventHandler(this.bUpdateAbstractClass_Click);
             // 
@@ -213,11 +213,11 @@
             // 
             this.bUpdateAllAbstractClass.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.bUpdateAllAbstractClass.ForeColor = System.Drawing.Color.Red;
-            this.bUpdateAllAbstractClass.Location = new System.Drawing.Point(12, 99);
+            this.bUpdateAllAbstractClass.Location = new System.Drawing.Point(12, 41);
             this.bUpdateAllAbstractClass.Name = "bUpdateAllAbstractClass";
             this.bUpdateAllAbstractClass.Size = new System.Drawing.Size(403, 23);
             this.bUpdateAllAbstractClass.TabIndex = 16;
-            this.bUpdateAllAbstractClass.Text = "Update All Modified Files Without DbContext Using Abstract Class";
+            this.bUpdateAllAbstractClass.Text = "Update Modified Files Using Abstract Service Class for AppCore";
             this.bUpdateAllAbstractClass.UseVisualStyleBackColor = true;
             this.bUpdateAllAbstractClass.Click += new System.EventHandler(this.bUpdateAllAbstractClass_Click);
             // 

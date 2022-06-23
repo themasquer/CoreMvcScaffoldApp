@@ -3,7 +3,22 @@
 @using System.Collections.Generic
 @using System.Linq
 @@model @GetEnumerableTypeExpression(Model.ViewDataTypeName)
-
+@{
+    @:
+    var message = "@{\n\tstring message;\n\tstring color;\n}\n";
+    message += "@if (ViewBag.Message != null)\n";
+    message += "{\n\tmessage = ViewBag.Message.ToString();\n\tcolor = \"success\";\n";
+    message += "\tif (message.EndsWith(\"!\"))\n\t{\n\t\tcolor = \"danger\";\n\t}\n";
+    message += "\t<p class=\"text-@color\">\n\t\t@message\n\t</p>\n";
+    message += "}\n";
+    message += "@if (TempData[\"Message\"] != null)\n";
+    message += "{\n\tmessage = TempData[\"Message\"].ToString();\n\tcolor = \"success\";\n";
+    message += "\tif (message.EndsWith(\"!\"))\n\t{\n\t\tcolor = \"danger\";\n\t}\n";
+    message += "\t<p class=\"text-@color\">\n\t\t@message\n\t</p>\n";
+    message += "}\n";
+    @message
+    @:
+}
 @{
     if (Model.IsPartialView)
     {
@@ -37,50 +52,42 @@
 @:<body>
         //    PushIndent("    ");
     }
-@:<p>
-    @:<a asp-action="Create">Create New</a>
-@:</p>
-@:
-var message = "@{\n\tstring message;\n\tstring color;\n}\n";
-message += "@if (ViewBag.Message != null)\n";
-message += "{\n\tmessage = ViewBag.Message.ToString();\n\tcolor = \"success\";\n";
-message += "\tif (message.EndsWith(\"!\"))\n\t{\n\t\tcolor = \"danger\";\n\t}\n";
-message += "\t<p class=\"text-@color\">\n\t\t@message\n\t</p>\n";
-message += "}\n";
-message += "@if (TempData[\"Message\"] != null)\n";
-message += "{\n\tmessage = TempData[\"Message\"].ToString();\n\tcolor = \"success\";\n";
-message += "\tif (message.EndsWith(\"!\"))\n\t{\n\t\tcolor = \"danger\";\n\t}\n";
-message += "\t<p class=\"text-@color\">\n\t\t@message\n\t</p>\n";
-message += "}\n";
-@message
-@:
-@:<table class="table">
-    @:<thead>
-        @:<tr>
-        Dictionary<string, IPropertyMetadata> propertyLookup = ((IModelMetadata)Model.ModelMetadata).Properties.ToDictionary(x => x.PropertyName, x => x);
-        Dictionary<string, INavigationMetadata> navigationLookup = ((IModelMetadata)Model.ModelMetadata).Navigations.ToDictionary(x => x.AssociationPropertyName, x => x);
+var openCurlyBraceLine = "{\n";
+var closeCurlyBraceLine = "}";
+var ifLine = "@if (Model != null && Model.Count() > 0)\n";
+@ifLine
+@openCurlyBraceLine
+    @:<p>
+        @:<a asp-action="Create">Create New</a>
+    @:</p>
+    @:<table class="table">
+        @:<thead>
+            @:<tr>
+            Dictionary<string, IPropertyMetadata> propertyLookup = ((IModelMetadata)Model.ModelMetadata).Properties.ToDictionary(x => x.PropertyName, x => x);
+            Dictionary<string, INavigationMetadata> navigationLookup = ((IModelMetadata)Model.ModelMetadata).Navigations.ToDictionary(x => x.AssociationPropertyName, x => x);
 
-        foreach (var item in Model.ModelMetadata.ModelType.GetProperties())
-        {
-            if (propertyLookup.TryGetValue(item.Name, out IPropertyMetadata property)
-                && property.Scaffold && !property.IsForeignKey && !property.IsPrimaryKey)
+            foreach (var item in Model.ModelMetadata.ModelType.GetProperties())
             {
-            <th>
-                @@Html.DisplayNameFor(model => model.@GetValueExpression(property))
-            </th>
+                if (propertyLookup.TryGetValue(item.Name, out IPropertyMetadata property)
+                    && property.Scaffold && !property.IsForeignKey && !property.IsPrimaryKey)
+                {
+                <th>
+                    @@Html.DisplayNameFor(model => model.@GetValueExpression(property))
+                </th>
+                }
+                else if (navigationLookup.TryGetValue(item.Name, out INavigationMetadata navigation))
+                {
+                <th>
+                    @@Html.DisplayNameFor(model => model.@GetValueExpression(navigation))
+                </th>
+                }
             }
-            else if (navigationLookup.TryGetValue(item.Name, out INavigationMetadata navigation))
-            {
-            <th>
-                @@Html.DisplayNameFor(model => model.@GetValueExpression(navigation))
-            </th>
-            }
-        }
-            @:<th></th>
-        @:</tr>
-    @:</thead>
-    @:<tbody>
-		@:@@foreach (var item in Model) {
+                @:<th></th>
+            @:</tr>
+        @:</thead>
+        @:<tbody>
+		    @:@@foreach (var item in Model)
+            @:{
 				@:<tr>
 				foreach (var item in Model.ModelMetadata.ModelType.GetProperties())
 				{
@@ -116,10 +123,11 @@ message += "}\n";
 					</td>
 				}
 				@:</tr>
-		@:}
-    @:</tbody>
+		    @:}
+        @:</tbody>
 
-@:</table>
+    @:</table>
+@closeCurlyBraceLine
     if(!Model.IsPartialView && !Model.IsLayoutPageSelected)
     {
         //ClearIndent();

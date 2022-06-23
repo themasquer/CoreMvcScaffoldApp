@@ -2,7 +2,22 @@
 @using Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore
 @using System.Collections.Generic
 @using System.Linq
-
+@{
+    @:
+    var message = "@{\n\tstring message;\n\tstring color;\n}\n";
+    message += "@if (ViewBag.Message != null)\n";
+    message += "{\n\tmessage = ViewBag.Message.ToString();\n\tcolor = \"success\";\n";
+    message += "\tif (message.EndsWith(\"!\"))\n\t{\n\t\tcolor = \"danger\";\n\t}\n";
+    message += "\t<p class=\"text-@color\">\n\t\t@message\n\t</p>\n";
+    message += "}\n";
+    message += "@if (TempData[\"Message\"] != null)\n";
+    message += "{\n\tmessage = TempData[\"Message\"].ToString();\n\tcolor = \"success\";\n";
+    message += "\tif (message.EndsWith(\"!\"))\n\t{\n\t\tcolor = \"danger\";\n\t}\n";
+    message += "\t<p class=\"text-@color\">\n\t\t@message\n\t</p>\n";
+    message += "}\n";
+    @message
+    @:
+}
 @{
     if (Model.IsPartialView)
     {
@@ -35,20 +50,6 @@
     @:<title>@Model.ViewName</title>
 @:</head>
 @:<body>
-@:
-var message = "@{\n\tstring message;\n\tstring color;\n}\n";
-message += "@if (ViewBag.Message != null)\n";
-message += "{\n\tmessage = ViewBag.Message.ToString();\n\tcolor = \"success\";\n";
-message += "\tif (message.EndsWith(\"!\"))\n\t{\n\t\tcolor = \"danger\";\n\t}\n";
-message += "\t<p class=\"text-@color\">\n\t\t@message\n\t</p>\n";
-message += "}\n";
-message += "@if (TempData[\"Message\"] != null)\n";
-message += "{\n\tmessage = TempData[\"Message\"].ToString();\n\tcolor = \"success\";\n";
-message += "\tif (message.EndsWith(\"!\"))\n\t{\n\t\tcolor = \"danger\";\n\t}\n";
-message += "\t<p class=\"text-@color\">\n\t\t@message\n\t</p>\n";
-message += "}\n";
-@message
-@:
     }
     if (Model.ReferenceScriptLibraries)
     {

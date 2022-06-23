@@ -3,7 +3,22 @@
 @using System.Collections.Generic
 @using System.Linq
 @@model @Model.ViewDataTypeName
-
+@{
+    @:
+    var message = "@{\n\tstring message;\n\tstring color;\n}\n";
+    message += "@if (ViewBag.Message != null)\n";
+    message += "{\n\tmessage = ViewBag.Message.ToString();\n\tcolor = \"success\";\n";
+    message += "\tif (message.EndsWith(\"!\"))\n\t{\n\t\tcolor = \"danger\";\n\t}\n";
+    message += "\t<p class=\"text-@color\">\n\t\t@message\n\t</p>\n";
+    message += "}\n";
+    message += "@if (TempData[\"Message\"] != null)\n";
+    message += "{\n\tmessage = TempData[\"Message\"].ToString();\n\tcolor = \"success\";\n";
+    message += "\tif (message.EndsWith(\"!\"))\n\t{\n\t\tcolor = \"danger\";\n\t}\n";
+    message += "\t<p class=\"text-@color\">\n\t\t@message\n\t</p>\n";
+    message += "}\n";
+    @message
+    @:
+}
 @{
     if (Model.IsPartialView)
     {
@@ -40,20 +55,6 @@
     }
 @:<h4>@Model.ViewDataTypeShortName</h4>
 @:<hr />
-@:
-var message = "@{\n\tstring message;\n\tstring color;\n}\n";
-message += "@if (ViewBag.Message != null)\n";
-message += "{\n\tmessage = ViewBag.Message.ToString();\n\tcolor = \"success\";\n";
-message += "\tif (message.EndsWith(\"!\"))\n\t{\n\t\tcolor = \"danger\";\n\t}\n";
-message += "\t<p class=\"text-@color\">\n\t\t@message\n\t</p>\n";
-message += "}\n";
-message += "@if (TempData[\"Message\"] != null)\n";
-message += "{\n\tmessage = TempData[\"Message\"].ToString();\n\tcolor = \"success\";\n";
-message += "\tif (message.EndsWith(\"!\"))\n\t{\n\t\tcolor = \"danger\";\n\t}\n";
-message += "\t<p class=\"text-@color\">\n\t\t@message\n\t</p>\n";
-message += "}\n";
-@message
-@:
 @:<div class="row">
     @:<div class="col-12">
         @:<form asp-action="@Model.ViewName">
