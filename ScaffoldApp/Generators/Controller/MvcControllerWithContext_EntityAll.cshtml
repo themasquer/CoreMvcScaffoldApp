@@ -8,13 +8,8 @@ if (@Model.NullableEnabled)
 }
 @using System.Collections.Generic;
 @using System.Linq;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
 @{
     foreach (var namespaceName in Model.RequiredNamespaces)
     {
@@ -76,7 +71,7 @@ namespace @Model.ControllerNamespace
     var serviceAbstractClassName = Model.ModelVariable + "Service";
     var constructorLine = "public " + Model.ControllerName + "(" + serviceAbstractClassType + " " + serviceAbstractClassName + ")";
     var listLine = "List<" + Model.ModelTypeName + "> " + Model.ModelVariable + "List = " + ("_" + serviceAbstractClassName) + ".GetList();";
-    var itemLine = Model.ModelTypeName + " " + Model.ModelVariable + " = " + ("_" + serviceAbstractClassName) + ".GetItem(id);";
+    var itemLine = Model.ModelTypeName + " " + Model.ModelVariable + " = " + ("_" + serviceAbstractClassName) + ".GetItem(m => m.Id == id);";
     var viewListLine = "return View(" + Model.ModelVariable + "List);";
     var viewItemLine = "return View(" + Model.ModelVariable + ");";
     var addLine = "var result = " + ("_" + serviceAbstractClassName) + ".Add(" + Model.ModelVariable + ");";

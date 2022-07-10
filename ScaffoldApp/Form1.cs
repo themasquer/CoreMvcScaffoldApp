@@ -11,7 +11,8 @@ namespace ScaffoldApp
         string _dbContext;
         string _interface;
         string _abstractClass;
-        string _all;
+        string _entityAll;
+        string _modelAll;
         string[] userDirectories;
         string nugetPath;
         string controllerGeneratorPath;
@@ -40,7 +41,8 @@ namespace ScaffoldApp
                 _dbContext = "_DbContext";
                 _interface = "_Interface";
                 _abstractClass = "_AbstractClass";
-                _all = "_All";
+                _entityAll = "_EntityAll";
+                _modelAll = "_ModelAll";
                 nugetPath = nuget + @"\packages\microsoft.visualstudio.web.codegenerators.mvc";
                 controllerGeneratorPath = @"Templates\ControllerGenerator";
                 viewGeneratorPath = @"Templates\ViewGenerator";
@@ -100,7 +102,7 @@ namespace ScaffoldApp
                 }
                 else
                 {
-                    files = Directory.GetFiles(startupPath + @"\Generators\View").Where(f => !f.Contains(_backup) && !f.Contains(_all)).ToArray();
+                    files = Directory.GetFiles(startupPath + @"\Generators\View").Where(f => !f.Contains(_backup) && !f.Contains(_entityAll)).ToArray();
                     found = true;
                     foreach (var file in files)
                     {
@@ -283,7 +285,7 @@ namespace ScaffoldApp
                 }
                 else
                 {
-                    files = Directory.GetFiles(startupPath + @"\Generators\View").Where(f => !f.Contains(_backup) && !f.Contains(_all)).ToArray();
+                    files = Directory.GetFiles(startupPath + @"\Generators\View").Where(f => !f.Contains(_backup) && !f.Contains(_entityAll)).ToArray();
                     found = true;
                     foreach (var file in files)
                     {
@@ -336,7 +338,7 @@ namespace ScaffoldApp
                 }
                 else
                 {
-                    files = Directory.GetFiles(startupPath + @"\Generators\View").Where(f => !f.Contains(_backup) && !f.Contains(_all)).ToArray();
+                    files = Directory.GetFiles(startupPath + @"\Generators\View").Where(f => !f.Contains(_backup) && !f.Contains(_entityAll)).ToArray();
                     found = true;
                     foreach (var file in files)
                     {
@@ -365,17 +367,17 @@ namespace ScaffoldApp
             }
         }
 
-        private void bUpdateAllAbstractClass_Click(object sender, EventArgs e)
+        private void bUpdateAllEntityAbstractClass_Click(object sender, EventArgs e)
         {
             try
             {
                 UpdateControllerAndViewPaths();
-                files = Directory.GetFiles(startupPath + @"\Generators\Controller").Where(f => f.Contains(_all)).ToArray();
+                files = Directory.GetFiles(startupPath + @"\Generators\Controller").Where(f => f.Contains(_entityAll)).ToArray();
                 bool found = true;
                 foreach (var file in files)
                 {
                     sourceFileName = Path.GetFileName(file);
-                    destinationFileName = Path.Combine(controllerGeneratorUpdatePath, sourceFileName.Replace(_all, ""));
+                    destinationFileName = Path.Combine(controllerGeneratorUpdatePath, sourceFileName.Replace(_entityAll, ""));
                     if (!File.Exists(destinationFileName))
                     {
                         found = false;
@@ -389,12 +391,65 @@ namespace ScaffoldApp
                 }
                 else
                 {
-                    files = Directory.GetFiles(startupPath + @"\Generators\View").Where(f => f.Contains(_all)).ToArray();
+                    files = Directory.GetFiles(startupPath + @"\Generators\View").Where(f => f.Contains(_entityAll)).ToArray();
                     found = true;
                     foreach (var file in files)
                     {
                         sourceFileName = Path.GetFileName(file);
-                        destinationFileName = Path.Combine(viewGeneratorUpdatePath, sourceFileName.Replace(_all, ""));
+                        destinationFileName = Path.Combine(viewGeneratorUpdatePath, sourceFileName.Replace(_entityAll, ""));
+                        if (!File.Exists(destinationFileName))
+                        {
+                            found = false;
+                            break;
+                        }
+                        File.Copy(file, destinationFileName, true);
+                    }
+                    if (!found)
+                    {
+                        MessageBox.Show("Files copy canceled! Files not found!", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+                    }
+                    else
+                    {
+                        MessageBox.Show("Files copied successfully.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+                    }
+                }
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("An error occured during copying files!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+            }
+        }
+
+        private void bUpdateAllModelAbstractClass_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                UpdateControllerAndViewPaths();
+                files = Directory.GetFiles(startupPath + @"\Generators\Controller").Where(f => f.Contains(_modelAll)).ToArray();
+                bool found = true;
+                foreach (var file in files)
+                {
+                    sourceFileName = Path.GetFileName(file);
+                    destinationFileName = Path.Combine(controllerGeneratorUpdatePath, sourceFileName.Replace(_modelAll, ""));
+                    if (!File.Exists(destinationFileName))
+                    {
+                        found = false;
+                        break;
+                    }
+                    File.Copy(file, destinationFileName, true);
+                }
+                if (!found)
+                {
+                    MessageBox.Show("Files copy canceled! Files not found!", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+                }
+                else
+                {
+                    files = Directory.GetFiles(startupPath + @"\Generators\View").Where(f => f.Contains(_modelAll)).ToArray();
+                    found = true;
+                    foreach (var file in files)
+                    {
+                        sourceFileName = Path.GetFileName(file);
+                        destinationFileName = Path.Combine(viewGeneratorUpdatePath, sourceFileName.Replace(_modelAll, ""));
                         if (!File.Exists(destinationFileName))
                         {
                             found = false;

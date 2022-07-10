@@ -45,7 +45,8 @@
             this.label4 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.bUpdateAbstractClass = new System.Windows.Forms.Button();
-            this.bUpdateAllAbstractClass = new System.Windows.Forms.Button();
+            this.bUpdateAllEntityAbstractClass = new System.Windows.Forms.Button();
+            this.bUpdateAllModelAbstractClass = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -69,11 +70,11 @@
             // 
             this.bUpdateInterface.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.bUpdateInterface.ForeColor = System.Drawing.Color.Red;
-            this.bUpdateInterface.Location = new System.Drawing.Point(12, 99);
+            this.bUpdateInterface.Location = new System.Drawing.Point(406, 70);
             this.bUpdateInterface.Name = "bUpdateInterface";
-            this.bUpdateInterface.Size = new System.Drawing.Size(403, 23);
+            this.bUpdateInterface.Size = new System.Drawing.Size(310, 23);
             this.bUpdateInterface.TabIndex = 2;
-            this.bUpdateInterface.Text = "Update Modified Files Using Service Interface";
+            this.bUpdateInterface.Text = "Update Using Service Interface";
             this.bUpdateInterface.UseVisualStyleBackColor = true;
             this.bUpdateInterface.Click += new System.EventHandler(this.bUpdateInterface_Click);
             // 
@@ -155,9 +156,9 @@
             // 
             this.bBackup.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.bBackup.ForeColor = System.Drawing.Color.Red;
-            this.bBackup.Location = new System.Drawing.Point(677, 41);
+            this.bBackup.Location = new System.Drawing.Point(722, 70);
             this.bBackup.Name = "bBackup";
-            this.bBackup.Size = new System.Drawing.Size(295, 23);
+            this.bBackup.Size = new System.Drawing.Size(250, 23);
             this.bBackup.TabIndex = 11;
             this.bBackup.Text = "Restore Microsoft Backup Files";
             this.bBackup.UseVisualStyleBackColor = true;
@@ -167,11 +168,11 @@
             // 
             this.bDbContext.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.bDbContext.ForeColor = System.Drawing.Color.Red;
-            this.bDbContext.Location = new System.Drawing.Point(421, 41);
+            this.bDbContext.Location = new System.Drawing.Point(722, 41);
             this.bDbContext.Name = "bDbContext";
             this.bDbContext.Size = new System.Drawing.Size(250, 23);
             this.bDbContext.TabIndex = 12;
-            this.bDbContext.Text = "Update Modified Files With DbContext";
+            this.bDbContext.Text = "Update With DbContext";
             this.bDbContext.UseVisualStyleBackColor = true;
             this.bDbContext.Click += new System.EventHandler(this.bDbContext_Click);
             // 
@@ -201,32 +202,45 @@
             // 
             this.bUpdateAbstractClass.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.bUpdateAbstractClass.ForeColor = System.Drawing.Color.Red;
-            this.bUpdateAbstractClass.Location = new System.Drawing.Point(12, 70);
+            this.bUpdateAbstractClass.Location = new System.Drawing.Point(406, 41);
             this.bUpdateAbstractClass.Name = "bUpdateAbstractClass";
-            this.bUpdateAbstractClass.Size = new System.Drawing.Size(403, 23);
+            this.bUpdateAbstractClass.Size = new System.Drawing.Size(310, 23);
             this.bUpdateAbstractClass.TabIndex = 15;
-            this.bUpdateAbstractClass.Text = "Update Modified Files Using Abstract Service Class";
+            this.bUpdateAbstractClass.Text = "Update Using Abstract Service Class";
             this.bUpdateAbstractClass.UseVisualStyleBackColor = true;
             this.bUpdateAbstractClass.Click += new System.EventHandler(this.bUpdateAbstractClass_Click);
             // 
-            // bUpdateAllAbstractClass
+            // bUpdateAllEntityAbstractClass
             // 
-            this.bUpdateAllAbstractClass.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.bUpdateAllAbstractClass.ForeColor = System.Drawing.Color.Red;
-            this.bUpdateAllAbstractClass.Location = new System.Drawing.Point(12, 41);
-            this.bUpdateAllAbstractClass.Name = "bUpdateAllAbstractClass";
-            this.bUpdateAllAbstractClass.Size = new System.Drawing.Size(403, 23);
-            this.bUpdateAllAbstractClass.TabIndex = 16;
-            this.bUpdateAllAbstractClass.Text = "Update Modified Files Using Abstract Service Class for AppCore";
-            this.bUpdateAllAbstractClass.UseVisualStyleBackColor = true;
-            this.bUpdateAllAbstractClass.Click += new System.EventHandler(this.bUpdateAllAbstractClass_Click);
+            this.bUpdateAllEntityAbstractClass.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.bUpdateAllEntityAbstractClass.ForeColor = System.Drawing.Color.Red;
+            this.bUpdateAllEntityAbstractClass.Location = new System.Drawing.Point(12, 70);
+            this.bUpdateAllEntityAbstractClass.Name = "bUpdateAllEntityAbstractClass";
+            this.bUpdateAllEntityAbstractClass.Size = new System.Drawing.Size(388, 23);
+            this.bUpdateAllEntityAbstractClass.TabIndex = 16;
+            this.bUpdateAllEntityAbstractClass.Text = "Update Using Abstract Entity Service Class for AppCoreLite";
+            this.bUpdateAllEntityAbstractClass.UseVisualStyleBackColor = true;
+            this.bUpdateAllEntityAbstractClass.Click += new System.EventHandler(this.bUpdateAllEntityAbstractClass_Click);
+            // 
+            // bUpdateAllModelAbstractClass
+            // 
+            this.bUpdateAllModelAbstractClass.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.bUpdateAllModelAbstractClass.ForeColor = System.Drawing.Color.Red;
+            this.bUpdateAllModelAbstractClass.Location = new System.Drawing.Point(12, 41);
+            this.bUpdateAllModelAbstractClass.Name = "bUpdateAllModelAbstractClass";
+            this.bUpdateAllModelAbstractClass.Size = new System.Drawing.Size(388, 23);
+            this.bUpdateAllModelAbstractClass.TabIndex = 17;
+            this.bUpdateAllModelAbstractClass.Text = "Update Using Abstract Model Service Class for AppCoreLite";
+            this.bUpdateAllModelAbstractClass.UseVisualStyleBackColor = true;
+            this.bUpdateAllModelAbstractClass.Click += new System.EventHandler(this.bUpdateAllModelAbstractClass_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 281);
-            this.Controls.Add(this.bUpdateAllAbstractClass);
+            this.Controls.Add(this.bUpdateAllModelAbstractClass);
+            this.Controls.Add(this.bUpdateAllEntityAbstractClass);
             this.Controls.Add(this.bUpdateAbstractClass);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.label4);
@@ -244,6 +258,7 @@
             this.Controls.Add(this.tbUserPath);
             this.Controls.Add(this.label1);
             this.Name = "Form1";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Scaffold App";
             this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
@@ -270,6 +285,7 @@
         private Label label4;
         private Label label5;
         private Button bUpdateAbstractClass;
-        private Button bUpdateAllAbstractClass;
+        private Button bUpdateAllEntityAbstractClass;
+        private Button bUpdateAllModelAbstractClass;
     }
 }
