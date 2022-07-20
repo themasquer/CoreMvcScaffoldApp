@@ -28,12 +28,12 @@ namespace @Model.ControllerNamespace
     var serviceAbstractClassName = Model.ModelVariable + "Service";
     var constructorLine = "public " + Model.ControllerName + "(" + serviceAbstractClassType + " " + serviceAbstractClassName + ")";
     var listLine = "List<" + Model.ModelTypeName + "Model> " + Model.ModelVariable + "List = " + ("_" + serviceAbstractClassName) + ".GetList();";
-    var itemLine = Model.ModelTypeName + "Model " + Model.ModelVariable + " = " + ("_" + serviceAbstractClassName) + ".GetItem(m => m.Id == id);";
+    var itemLine = Model.ModelTypeName + "Model " + Model.ModelVariable + " = " + ("_" + serviceAbstractClassName) + ".GetItem(id);";
     var okListLine = "return Ok(" + Model.ModelVariable + "List);";
     var okItemLine = "return Ok(" + Model.ModelVariable + ");";
     var addLine = "var result = " + ("_" + serviceAbstractClassName) + ".Add(" + Model.ModelVariable + ");";
     var updateLine = "var result = " + ("_" + serviceAbstractClassName) + ".Update(" + Model.ModelVariable + ");";
-    var deleteLine = "var result = " + ("_" + serviceAbstractClassName) + ".Delete(new List<int>() { id });";
+    var deleteLine = "var result = " + ("_" + serviceAbstractClassName) + ".Delete(id);";
     var ifResultSuccessfulLine = "if (result.IsSuccessful)";
     var openCurlyBraceLine = "{";
     var createdAtActionLine = "//return CreatedAtAction(\"Get\", new { id = " + Model.ModelVariable + "." + primaryKeyName + " }, " + Model.ModelVariable + ");";
