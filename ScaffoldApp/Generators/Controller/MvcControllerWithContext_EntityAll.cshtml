@@ -76,7 +76,7 @@ namespace @Model.ControllerNamespace
     var viewItemLine = "return View(" + Model.ModelVariable + ");";
     var addLine = "var result = " + ("_" + serviceAbstractClassName) + ".Add(" + Model.ModelVariable + ");";
     var updateLine = "var result = " + ("_" + serviceAbstractClassName) + ".Update(" + Model.ModelVariable + ");";
-    var deleteLine = "var result = " + ("_" + serviceAbstractClassName) + ".Delete(m => m.Id == id);";
+    var deleteLine = "var result = " + ("_" + serviceAbstractClassName) + ".Delete(id);";
     var ifResultSuccessfulLine = "if (result.IsSuccessful)";
     var openCurlyBraceLine = "{";
     var TempDataLine = "TempData[\"Message\"] = result.Message; // End message in service with '.' for success, '!' for danger Bootstrap CSS classes to be used in the View";
