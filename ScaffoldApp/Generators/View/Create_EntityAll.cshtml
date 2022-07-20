@@ -58,7 +58,7 @@
 @:<div class="row">
     @:<div class="col-12">
         @:<form asp-action="@Model.ViewName">
-		@:@@Html.AntiForgeryToken()
+		    @:@@Html.AntiForgeryToken()
             @:<div asp-validation-summary="All" class="text-danger"></div>
         foreach (var property in Model.ModelMetadata.Properties)
         {

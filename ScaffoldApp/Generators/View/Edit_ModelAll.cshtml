@@ -66,7 +66,7 @@ var ifLine = "@if (Model != null)\n";
     @:<div class="row">
         @:<div class="col-12">
             @:<form asp-action="@Model.ViewName">
-		    @:@@Html.AntiForgeryToken()
+		        @:@@Html.AntiForgeryToken()
                 @:<div asp-validation-summary="All" class="text-danger"></div>
             foreach (PropertyMetadata property in Model.ModelMetadata.Properties)
             {
