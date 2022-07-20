@@ -61,7 +61,7 @@ var ifLine = "@if (Model != null && Model.Count() > 0)\n";
         @:<a asp-action="Create">Create New</a>
     @:</p>
     @:<div style="overflow-y: auto; height: 250px; border-style: solid; border-width: 1px;">
-        @:<table class="table">
+        @:<table class="table table-striped">
             @:<thead>
                 @:<tr>
                 Dictionary<string, IPropertyMetadata> propertyLookup = ((IModelMetadata)Model.ModelMetadata).Properties.ToDictionary(x => x.PropertyName, x => x);
