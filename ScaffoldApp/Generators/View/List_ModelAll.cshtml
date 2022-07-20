@@ -77,7 +77,9 @@ var ifLine = "@if (Model != null && Model.Count() > 0)\n";
                     && property.Scaffold && !property.IsForeignKey && !property.IsPrimaryKey)
                 {
                 <th>
-                    @@Html.DisplayNameFor(model => model.@GetValueExpression(property))
+                    <a href="#" class="orderexpressionlink">
+                        @@Html.DisplayNameFor(model => model.@GetValueExpression(property))
+                    </a>
                 </th>
                 }
                 else if (navigationLookup.TryGetValue(item.Name, out INavigationMetadata navigation))
