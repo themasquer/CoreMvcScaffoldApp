@@ -102,7 +102,7 @@ namespace ScaffoldApp
                 }
                 else
                 {
-                    files = Directory.GetFiles(startupPath + @"\Generators\View").Where(f => !f.Contains(_backup) && !f.Contains(_entityAll)).ToArray();
+                    files = Directory.GetFiles(startupPath + @"\Generators\View").Where(f => !f.Contains(_backup) && !f.Contains(_entityAll) && !f.Contains(_modelAll)).ToArray();
                     found = true;
                     foreach (var file in files)
                     {
@@ -285,7 +285,7 @@ namespace ScaffoldApp
                 }
                 else
                 {
-                    files = Directory.GetFiles(startupPath + @"\Generators\View").Where(f => !f.Contains(_backup) && !f.Contains(_entityAll)).ToArray();
+                    files = Directory.GetFiles(startupPath + @"\Generators\View").Where(f => !f.Contains(_backup) && !f.Contains(_entityAll) && !f.Contains(_modelAll)).ToArray();
                     found = true;
                     foreach (var file in files)
                     {
@@ -338,7 +338,7 @@ namespace ScaffoldApp
                 }
                 else
                 {
-                    files = Directory.GetFiles(startupPath + @"\Generators\View").Where(f => !f.Contains(_backup) && !f.Contains(_entityAll)).ToArray();
+                    files = Directory.GetFiles(startupPath + @"\Generators\View").Where(f => !f.Contains(_backup) && !f.Contains(_entityAll) && !f.Contains(_modelAll)).ToArray();
                     found = true;
                     foreach (var file in files)
                     {
