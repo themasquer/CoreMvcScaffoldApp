@@ -13,6 +13,7 @@ namespace ScaffoldApp
         string _abstractClass;
         string _entityAll;
         string _modelAll;
+        string _templates;
         string[] userDirectories;
         string nugetPath;
         string controllerGeneratorPath;
@@ -24,6 +25,8 @@ namespace ScaffoldApp
         string destinationFileName;
         string[] files;
         List<string> versionedDirectories;
+        List<string> controllerGeneratorUpdateFolders;
+        List<string> viewGeneratorUpdateFolders;
 
         public Form1()
         {
@@ -43,9 +46,10 @@ namespace ScaffoldApp
                 _abstractClass = "_AbstractClass";
                 _entityAll = "_EntityAll";
                 _modelAll = "_ModelAll";
+                _templates = "Templates";
                 nugetPath = nuget + @"\packages\microsoft.visualstudio.web.codegenerators.mvc";
-                controllerGeneratorPath = @"Templates\ControllerGenerator";
-                viewGeneratorPath = @"Templates\ViewGenerator";
+                controllerGeneratorPath = _templates + @"\ControllerGenerator";
+                viewGeneratorPath = _templates + @"\ViewGenerator";
                 tbUserPath.Text = userPath;
                 UpdateControllerAndViewPaths();
             }
@@ -55,75 +59,66 @@ namespace ScaffoldApp
             }
         }
 
-        void UpdateControllerAndViewPaths()
+        void UpdateControllerAndViewPaths(bool formLoad = true)
         {
-            userDirectories = Directory.GetDirectories(tbUserPath.Text);
-            if (!userDirectories.Any(ud => ud.EndsWith(nuget)))
+            if (formLoad)
             {
-                MessageBox.Show(nuget + " folder could not be found!\n\nPlease use Entity Framework controller scaffolding once in your project for downloading necessary Nuget packages!", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
-                tbUserPath.Text = userPath;
-                return;
+                userDirectories = Directory.GetDirectories(tbUserPath.Text);
+                if (!userDirectories.Any(ud => ud.EndsWith(nuget)))
+                {
+                    MessageBox.Show(nuget + " folder could not be found!\n\nPlease use Entity Framework controller scaffolding once in your project!", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+                    tbUserPath.Text = userPath;
+                    return;
+                }
+                versionedDirectories = Directory.GetDirectories(tbUserPath.Text + @"\" + nugetPath).OrderBy(d => Convert.ToInt32(d.Split('\\').LastOrDefault().Replace(".", ""))).ToList();
+                if (versionedDirectories == null || versionedDirectories.Count == 0)
+                {
+                    MessageBox.Show("Version directories could not be found!\n\nPlease use Entity Framework controller scaffolding once in your project!", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+                    tbUserPath.Text = userPath;
+                    return;
+                }
+                lastVersionedDirectory = versionedDirectories.LastOrDefault();
+                if (lastVersionedDirectory == null)
+                {
+                    MessageBox.Show("Version directory could not be found!\n\nPlease use Entity Framework controller scaffolding once in your project!", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+                    tbUserPath.Text = userPath;
+                    return;
+                }
+                tbVersion.Text = lastVersionedDirectory.Split('\\').LastOrDefault();
+                controllerGeneratorUpdatePath = lastVersionedDirectory + @"\" + controllerGeneratorPath;
+                viewGeneratorUpdatePath = lastVersionedDirectory + @"\" + viewGeneratorPath;
+                tbControllerPath.Text = controllerGeneratorUpdatePath;
+                tbViewPath.Text = viewGeneratorUpdatePath;
+                controllerGeneratorUpdateFolders = controllerGeneratorUpdatePath.Split('\\').ToList();
+                viewGeneratorUpdateFolders = viewGeneratorUpdatePath.Split('\\').ToList();
             }
-            versionedDirectories = Directory.GetDirectories(tbUserPath.Text + @"\" + nugetPath).OrderBy(d => d).ToList();
-            lastVersionedDirectory = versionedDirectories.LastOrDefault();
-            if (lastVersionedDirectory == null)
+            else
             {
-                MessageBox.Show("Version directory could not be found!\n\nPlease use Entity Framework controller scaffolding once in your project for downloading necessary Nuget packages!", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
-                tbUserPath.Text = userPath;
-                return;
+                controllerGeneratorUpdatePath = tbControllerPath.Text;
+                viewGeneratorUpdatePath = tbViewPath.Text;
             }
-            controllerGeneratorUpdatePath = lastVersionedDirectory + @"\" + controllerGeneratorPath;
-            viewGeneratorUpdatePath = lastVersionedDirectory + @"\" + viewGeneratorPath;
-            tbControllerPath.Text = controllerGeneratorUpdatePath;
-            tbViewPath.Text = viewGeneratorUpdatePath;
         }
 
         private void bUpdateInterface_Click(object sender, EventArgs e)
         {
             try
             {
-                UpdateControllerAndViewPaths();
+                UpdateControllerAndViewPaths(false);
                 files = Directory.GetFiles(startupPath + @"\Generators\Controller").Where(f => f.Contains(_interface)).ToArray();
-                bool found = true;
                 foreach (var file in files)
                 {
                     sourceFileName = Path.GetFileName(file);
                     destinationFileName = Path.Combine(controllerGeneratorUpdatePath, sourceFileName.Replace(_interface, ""));
-                    if (!File.Exists(destinationFileName))
-                    {
-                        found = false;
-                        break;
-                    }
                     File.Copy(file, destinationFileName, true);
                 }
-                if (!found)
+                files = Directory.GetFiles(startupPath + @"\Generators\View").Where(f => !f.Contains(_backup) && !f.Contains(_entityAll) && !f.Contains(_modelAll)).ToArray();
+                foreach (var file in files)
                 {
-                    MessageBox.Show("Files copy canceled! Files not found!", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+                    sourceFileName = Path.GetFileName(file);
+                    destinationFileName = Path.Combine(viewGeneratorUpdatePath, sourceFileName);
+                    File.Copy(file, destinationFileName, true);
                 }
-                else
-                {
-                    files = Directory.GetFiles(startupPath + @"\Generators\View").Where(f => !f.Contains(_backup) && !f.Contains(_entityAll) && !f.Contains(_modelAll)).ToArray();
-                    found = true;
-                    foreach (var file in files)
-                    {
-                        sourceFileName = Path.GetFileName(file);
-                        destinationFileName = Path.Combine(viewGeneratorUpdatePath, sourceFileName);
-                        if (!File.Exists(destinationFileName))
-                        {
-                            found = false;
-                            break;
-                        }
-                        File.Copy(file, destinationFileName, true);
-                    }
-                    if (!found)
-                    {
-                        MessageBox.Show("Files copy canceled! Files not found!", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Files copied successfully.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-                    }
-                }
+                MessageBox.Show("Files copied successfully.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
             }
             catch (Exception exc)
             {
@@ -212,48 +207,22 @@ namespace ScaffoldApp
         {
             try
             {
-                UpdateControllerAndViewPaths();
+                UpdateControllerAndViewPaths(false);
                 files = Directory.GetFiles(startupPath + @"\Generators\Controller").Where(f => f.Contains(_backup)).ToArray();
-                bool found = true;
                 foreach (var file in files)
                 {
                     sourceFileName = Path.GetFileName(file);
                     destinationFileName = Path.Combine(controllerGeneratorUpdatePath, sourceFileName.Replace(_backup, ""));
-                    if (!File.Exists(destinationFileName))
-                    {
-                        found = false;
-                        break;
-                    }
                     File.Copy(file, destinationFileName, true);
                 }
-                if (!found)
+                files = Directory.GetFiles(startupPath + @"\Generators\View").Where(f => f.Contains(_backup)).ToArray();
+                foreach (var file in files)
                 {
-                    MessageBox.Show("Files copy canceled! Files not found!", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+                    sourceFileName = Path.GetFileName(file);
+                    destinationFileName = Path.Combine(viewGeneratorUpdatePath, sourceFileName.Replace(_backup, ""));
+                    File.Copy(file, destinationFileName, true);
                 }
-                else
-                {
-                    files = Directory.GetFiles(startupPath + @"\Generators\View").Where(f => f.Contains(_backup)).ToArray();
-                    found = true;
-                    foreach (var file in files)
-                    {
-                        sourceFileName = Path.GetFileName(file);
-                        destinationFileName = Path.Combine(viewGeneratorUpdatePath, sourceFileName.Replace(_backup, ""));
-                        if (!File.Exists(destinationFileName))
-                        {
-                            found = false;
-                            break;
-                        }
-                        File.Copy(file, destinationFileName, true);
-                    }
-                    if (!found)
-                    {
-                        MessageBox.Show("Files copy canceled! Files not found!", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Files copied successfully.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-                    }
-                }
+                MessageBox.Show("Files copied successfully.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
             }
             catch (Exception exc)
             {
@@ -265,48 +234,22 @@ namespace ScaffoldApp
         {
             try
             {
-                UpdateControllerAndViewPaths();
+                UpdateControllerAndViewPaths(false);
                 files = Directory.GetFiles(startupPath + @"\Generators\Controller").Where(f => f.Contains(_dbContext)).ToArray();
-                bool found = true;
                 foreach (var file in files)
                 {
                     sourceFileName = Path.GetFileName(file);
                     destinationFileName = Path.Combine(controllerGeneratorUpdatePath, sourceFileName.Replace(_dbContext, ""));
-                    if (!File.Exists(destinationFileName))
-                    {
-                        found = false;
-                        break;
-                    }
                     File.Copy(file, destinationFileName, true);
                 }
-                if (!found)
+                files = Directory.GetFiles(startupPath + @"\Generators\View").Where(f => !f.Contains(_backup) && !f.Contains(_entityAll) && !f.Contains(_modelAll)).ToArray();
+                foreach (var file in files)
                 {
-                    MessageBox.Show("Files copy canceled! Files not found!", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+                    sourceFileName = Path.GetFileName(file);
+                    destinationFileName = Path.Combine(viewGeneratorUpdatePath, sourceFileName);
+                    File.Copy(file, destinationFileName, true);
                 }
-                else
-                {
-                    files = Directory.GetFiles(startupPath + @"\Generators\View").Where(f => !f.Contains(_backup) && !f.Contains(_entityAll) && !f.Contains(_modelAll)).ToArray();
-                    found = true;
-                    foreach (var file in files)
-                    {
-                        sourceFileName = Path.GetFileName(file);
-                        destinationFileName = Path.Combine(viewGeneratorUpdatePath, sourceFileName);
-                        if (!File.Exists(destinationFileName))
-                        {
-                            found = false;
-                            break;
-                        }
-                        File.Copy(file, destinationFileName, true);
-                    }
-                    if (!found)
-                    {
-                        MessageBox.Show("Files copy canceled! Files not found!", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Files copied successfully.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-                    }
-                }
+                MessageBox.Show("Files copied successfully.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
             }
             catch (Exception exc)
             {
@@ -318,48 +261,22 @@ namespace ScaffoldApp
         {
             try
             {
-                UpdateControllerAndViewPaths();
+                UpdateControllerAndViewPaths(false);
                 files = Directory.GetFiles(startupPath + @"\Generators\Controller").Where(f => f.Contains(_abstractClass)).ToArray();
-                bool found = true;
                 foreach (var file in files)
                 {
                     sourceFileName = Path.GetFileName(file);
                     destinationFileName = Path.Combine(controllerGeneratorUpdatePath, sourceFileName.Replace(_abstractClass, ""));
-                    if (!File.Exists(destinationFileName))
-                    {
-                        found = false;
-                        break;
-                    }
                     File.Copy(file, destinationFileName, true);
                 }
-                if (!found)
+                files = Directory.GetFiles(startupPath + @"\Generators\View").Where(f => !f.Contains(_backup) && !f.Contains(_entityAll) && !f.Contains(_modelAll)).ToArray();
+                foreach (var file in files)
                 {
-                    MessageBox.Show("Files copy canceled! Files not found!", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+                    sourceFileName = Path.GetFileName(file);
+                    destinationFileName = Path.Combine(viewGeneratorUpdatePath, sourceFileName);
+                    File.Copy(file, destinationFileName, true);
                 }
-                else
-                {
-                    files = Directory.GetFiles(startupPath + @"\Generators\View").Where(f => !f.Contains(_backup) && !f.Contains(_entityAll) && !f.Contains(_modelAll)).ToArray();
-                    found = true;
-                    foreach (var file in files)
-                    {
-                        sourceFileName = Path.GetFileName(file);
-                        destinationFileName = Path.Combine(viewGeneratorUpdatePath, sourceFileName);
-                        if (!File.Exists(destinationFileName))
-                        {
-                            found = false;
-                            break;
-                        }
-                        File.Copy(file, destinationFileName, true);
-                    }
-                    if (!found)
-                    {
-                        MessageBox.Show("Files copy canceled! Files not found!", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Files copied successfully.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-                    }
-                }
+                MessageBox.Show("Files copied successfully.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
             }
             catch (Exception exc)
             {
@@ -371,48 +288,22 @@ namespace ScaffoldApp
         {
             try
             {
-                UpdateControllerAndViewPaths();
+                UpdateControllerAndViewPaths(false);
                 files = Directory.GetFiles(startupPath + @"\Generators\Controller").Where(f => f.Contains(_entityAll)).ToArray();
-                bool found = true;
                 foreach (var file in files)
                 {
                     sourceFileName = Path.GetFileName(file);
                     destinationFileName = Path.Combine(controllerGeneratorUpdatePath, sourceFileName.Replace(_entityAll, ""));
-                    if (!File.Exists(destinationFileName))
-                    {
-                        found = false;
-                        break;
-                    }
                     File.Copy(file, destinationFileName, true);
                 }
-                if (!found)
+                files = Directory.GetFiles(startupPath + @"\Generators\View").Where(f => f.Contains(_entityAll)).ToArray();
+                foreach (var file in files)
                 {
-                    MessageBox.Show("Files copy canceled! Files not found!", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+                    sourceFileName = Path.GetFileName(file);
+                    destinationFileName = Path.Combine(viewGeneratorUpdatePath, sourceFileName.Replace(_entityAll, ""));
+                    File.Copy(file, destinationFileName, true);
                 }
-                else
-                {
-                    files = Directory.GetFiles(startupPath + @"\Generators\View").Where(f => f.Contains(_entityAll)).ToArray();
-                    found = true;
-                    foreach (var file in files)
-                    {
-                        sourceFileName = Path.GetFileName(file);
-                        destinationFileName = Path.Combine(viewGeneratorUpdatePath, sourceFileName.Replace(_entityAll, ""));
-                        if (!File.Exists(destinationFileName))
-                        {
-                            found = false;
-                            break;
-                        }
-                        File.Copy(file, destinationFileName, true);
-                    }
-                    if (!found)
-                    {
-                        MessageBox.Show("Files copy canceled! Files not found!", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Files copied successfully.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-                    }
-                }
+                MessageBox.Show("Files copied successfully.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
             }
             catch (Exception exc)
             {
@@ -424,52 +315,42 @@ namespace ScaffoldApp
         {
             try
             {
-                UpdateControllerAndViewPaths();
+                UpdateControllerAndViewPaths(false);
                 files = Directory.GetFiles(startupPath + @"\Generators\Controller").Where(f => f.Contains(_modelAll)).ToArray();
-                bool found = true;
                 foreach (var file in files)
                 {
                     sourceFileName = Path.GetFileName(file);
                     destinationFileName = Path.Combine(controllerGeneratorUpdatePath, sourceFileName.Replace(_modelAll, ""));
-                    if (!File.Exists(destinationFileName))
-                    {
-                        found = false;
-                        break;
-                    }
                     File.Copy(file, destinationFileName, true);
                 }
-                if (!found)
+                files = Directory.GetFiles(startupPath + @"\Generators\View").Where(f => f.Contains(_modelAll)).ToArray();
+                foreach (var file in files)
                 {
-                    MessageBox.Show("Files copy canceled! Files not found!", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+                    sourceFileName = Path.GetFileName(file);
+                    destinationFileName = Path.Combine(viewGeneratorUpdatePath, sourceFileName.Replace(_modelAll, ""));
+                    File.Copy(file, destinationFileName, true);
                 }
-                else
-                {
-                    files = Directory.GetFiles(startupPath + @"\Generators\View").Where(f => f.Contains(_modelAll)).ToArray();
-                    found = true;
-                    foreach (var file in files)
-                    {
-                        sourceFileName = Path.GetFileName(file);
-                        destinationFileName = Path.Combine(viewGeneratorUpdatePath, sourceFileName.Replace(_modelAll, ""));
-                        if (!File.Exists(destinationFileName))
-                        {
-                            found = false;
-                            break;
-                        }
-                        File.Copy(file, destinationFileName, true);
-                    }
-                    if (!found)
-                    {
-                        MessageBox.Show("Files copy canceled! Files not found!", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Files copied successfully.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
-                    }
-                }
+                MessageBox.Show("Files copied successfully.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
             }
             catch (Exception exc)
             {
                 MessageBox.Show("An error occured during copying files!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
+            }
+        }
+
+        private void tbVersion_TextChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrWhiteSpace(controllerGeneratorUpdatePath))
+            {
+                controllerGeneratorUpdateFolders[controllerGeneratorUpdateFolders.IndexOf(_templates) - 1] = tbVersion.Text.Trim();
+                controllerGeneratorUpdatePath = string.Join(@"\", controllerGeneratorUpdateFolders);
+                tbControllerPath.Text = controllerGeneratorUpdatePath;
+            }
+            if (!string.IsNullOrWhiteSpace(viewGeneratorUpdatePath))
+            {
+                viewGeneratorUpdateFolders[viewGeneratorUpdateFolders.IndexOf(_templates) - 1] = tbVersion.Text.Trim();
+                viewGeneratorUpdatePath = string.Join(@"\", viewGeneratorUpdateFolders);
+                tbViewPath.Text = viewGeneratorUpdatePath;
             }
         }
     }

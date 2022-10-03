@@ -47,6 +47,8 @@
             this.bUpdateAbstractClass = new System.Windows.Forms.Button();
             this.bUpdateAllEntityAbstractClass = new System.Windows.Forms.Button();
             this.bUpdateAllModelAbstractClass = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.tbVersion = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -70,7 +72,7 @@
             // 
             this.bUpdateInterface.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.bUpdateInterface.ForeColor = System.Drawing.Color.Red;
-            this.bUpdateInterface.Location = new System.Drawing.Point(406, 70);
+            this.bUpdateInterface.Location = new System.Drawing.Point(406, 99);
             this.bUpdateInterface.Name = "bUpdateInterface";
             this.bUpdateInterface.Size = new System.Drawing.Size(310, 23);
             this.bUpdateInterface.TabIndex = 2;
@@ -156,7 +158,7 @@
             // 
             this.bBackup.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.bBackup.ForeColor = System.Drawing.Color.Red;
-            this.bBackup.Location = new System.Drawing.Point(722, 70);
+            this.bBackup.Location = new System.Drawing.Point(722, 99);
             this.bBackup.Name = "bBackup";
             this.bBackup.Size = new System.Drawing.Size(250, 23);
             this.bBackup.TabIndex = 11;
@@ -168,7 +170,7 @@
             // 
             this.bDbContext.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.bDbContext.ForeColor = System.Drawing.Color.Red;
-            this.bDbContext.Location = new System.Drawing.Point(722, 41);
+            this.bDbContext.Location = new System.Drawing.Point(722, 70);
             this.bDbContext.Name = "bDbContext";
             this.bDbContext.Size = new System.Drawing.Size(250, 23);
             this.bDbContext.TabIndex = 12;
@@ -200,13 +202,13 @@
             // 
             // bUpdateAbstractClass
             // 
-            this.bUpdateAbstractClass.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
+            this.bUpdateAbstractClass.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
             this.bUpdateAbstractClass.ForeColor = System.Drawing.Color.Red;
-            this.bUpdateAbstractClass.Location = new System.Drawing.Point(406, 41);
+            this.bUpdateAbstractClass.Location = new System.Drawing.Point(406, 70);
             this.bUpdateAbstractClass.Name = "bUpdateAbstractClass";
             this.bUpdateAbstractClass.Size = new System.Drawing.Size(310, 23);
             this.bUpdateAbstractClass.TabIndex = 15;
-            this.bUpdateAbstractClass.Text = "Update Using Abstract Service Class";
+            this.bUpdateAbstractClass.Text = "Update Using Abstract Service Class (For Lecture)";
             this.bUpdateAbstractClass.UseVisualStyleBackColor = true;
             this.bUpdateAbstractClass.Click += new System.EventHandler(this.bUpdateAbstractClass_Click);
             // 
@@ -214,7 +216,7 @@
             // 
             this.bUpdateAllEntityAbstractClass.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.bUpdateAllEntityAbstractClass.ForeColor = System.Drawing.Color.Red;
-            this.bUpdateAllEntityAbstractClass.Location = new System.Drawing.Point(12, 70);
+            this.bUpdateAllEntityAbstractClass.Location = new System.Drawing.Point(12, 99);
             this.bUpdateAllEntityAbstractClass.Name = "bUpdateAllEntityAbstractClass";
             this.bUpdateAllEntityAbstractClass.Size = new System.Drawing.Size(388, 23);
             this.bUpdateAllEntityAbstractClass.TabIndex = 16;
@@ -226,7 +228,7 @@
             // 
             this.bUpdateAllModelAbstractClass.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.bUpdateAllModelAbstractClass.ForeColor = System.Drawing.Color.Red;
-            this.bUpdateAllModelAbstractClass.Location = new System.Drawing.Point(12, 41);
+            this.bUpdateAllModelAbstractClass.Location = new System.Drawing.Point(12, 70);
             this.bUpdateAllModelAbstractClass.Name = "bUpdateAllModelAbstractClass";
             this.bUpdateAllModelAbstractClass.Size = new System.Drawing.Size(388, 23);
             this.bUpdateAllModelAbstractClass.TabIndex = 17;
@@ -234,11 +236,30 @@
             this.bUpdateAllModelAbstractClass.UseVisualStyleBackColor = true;
             this.bUpdateAllModelAbstractClass.Click += new System.EventHandler(this.bUpdateAllModelAbstractClass_Click);
             // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(12, 44);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(372, 15);
+            this.label6.TabIndex = 18;
+            this.label6.Text = "Microsoft.VisualStudio.Web.CodeGeneration.Design Package Version:";
+            // 
+            // tbVersion
+            // 
+            this.tbVersion.Location = new System.Drawing.Point(390, 41);
+            this.tbVersion.Name = "tbVersion";
+            this.tbVersion.Size = new System.Drawing.Size(125, 23);
+            this.tbVersion.TabIndex = 19;
+            this.tbVersion.TextChanged += new System.EventHandler(this.tbVersion_TextChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(984, 281);
+            this.Controls.Add(this.tbVersion);
+            this.Controls.Add(this.label6);
             this.Controls.Add(this.bUpdateAllModelAbstractClass);
             this.Controls.Add(this.bUpdateAllEntityAbstractClass);
             this.Controls.Add(this.bUpdateAbstractClass);
@@ -287,5 +308,7 @@
         private Button bUpdateAbstractClass;
         private Button bUpdateAllEntityAbstractClass;
         private Button bUpdateAllModelAbstractClass;
+        private Label label6;
+        private TextBox tbVersion;
     }
 }
