@@ -27,6 +27,8 @@ namespace ScaffoldApp
         List<string> versionedDirectories;
         List<string> controllerGeneratorUpdateFolders;
         List<string> viewGeneratorUpdateFolders;
+        const string ADMINUSERNAME = "admin";
+        const string ADMINPASSWORD = "admin";
 
         public Form1()
         {
@@ -37,6 +39,8 @@ namespace ScaffoldApp
         {
             try
             {
+                pLogin.Location = new Point(12, 12);
+                this.Size = new Size(1005, 333);
                 startupPath = Application.StartupPath.Replace(@"bin\Debug\net6.0-windows", "").Replace(@"bin\Release\net6.0-windows", "");
                 userPath = @"C:\Users\" + Environment.UserName;
                 nuget = ".nuget";
@@ -352,6 +356,42 @@ namespace ScaffoldApp
                 viewGeneratorUpdatePath = string.Join(@"\", viewGeneratorUpdateFolders);
                 tbViewPath.Text = viewGeneratorUpdatePath;
             }
+        }
+
+        private void bLogin_Click(object sender, EventArgs e)
+        {
+            if (!(tbUserName.Text == ADMINUSERNAME && tbPassword.Text == ADMINPASSWORD))
+            {
+                MessageBox.Show("Invalid user name or password!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
+                return;
+            }
+            bDbContext.Visible = true;
+            bUpdateAbstractClass.Visible = true;
+            bUpdateAllModelAbstractClass.Visible = true;
+            bUpdateAllEntityAbstractClass.Visible = true;
+            pLogin.Visible = false;
+            pMain.Visible = true;
+        }
+
+        private void bLoginAsVisitor_Click(object sender, EventArgs e)
+        {
+            pLogin.Visible = false;
+            pMain.Visible = true;
+        }
+
+        private void bUpdateInterface_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bBackup_Click_1(object sender, EventArgs e)
+        {
+
+        }
+
+        private void bUpdateAbstractClass_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

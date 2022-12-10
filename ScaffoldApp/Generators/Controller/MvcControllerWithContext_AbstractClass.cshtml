@@ -75,7 +75,8 @@ namespace @Model.ControllerNamespace
     var serviceAbstractClassType = Model.ModelTypeName + "ServiceBase";
     var serviceAbstractClassName = Model.ModelVariable + "Service";
     var constructorLine = "public " + Model.ControllerName + "(" + serviceAbstractClassType + " " + serviceAbstractClassName + ")";
-    var listLine = "List<" + Model.ModelTypeName + "> " + Model.ModelVariable + "List = null;";
+    var modelType = Model.ModelTypeName + "Model";
+    var listLine = "List<" + modelType + "> " + Model.ModelVariable + "List = null;";
     var viewLine = "return View(" + Model.ModelVariable + "List);";
 }
     public class @Model.ControllerName : Controller
@@ -98,7 +99,7 @@ namespace @Model.ControllerNamespace
         // GET: @routePrefix/Details/5
         public IActionResult Details(@primaryKeyShortTypeName id)
         {
-            @Model.ModelTypeName @Model.ModelVariable = null; // TODO: Add get item service logic here
+            @modelType @Model.ModelVariable = null; // TODO: Add get item service logic here
             if (@Model.ModelVariable == null)
             {
                 return NotFound();
@@ -123,7 +124,7 @@ namespace @Model.ControllerNamespace
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create(@Model.ModelTypeName @Model.ModelVariable)
+        public IActionResult Create(@modelType @Model.ModelVariable)
         {
             if (ModelState.IsValid)
             {
@@ -148,7 +149,7 @@ namespace @Model.ControllerNamespace
         // GET: @routePrefix/Edit/5
         public IActionResult Edit(@primaryKeyShortTypeName id)
         {
-            @Model.ModelTypeName @Model.ModelVariable = null; // TODO: Add get item service logic here
+            @modelType @Model.ModelVariable = null; // TODO: Add get item service logic here
             if (@Model.ModelVariable == null)
             {
                 return NotFound();
@@ -168,7 +169,7 @@ namespace @Model.ControllerNamespace
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(@Model.ModelTypeName @Model.ModelVariable)
+        public IActionResult Edit(@modelType @Model.ModelVariable)
         {
             if (ModelState.IsValid)
             {
@@ -190,7 +191,7 @@ namespace @Model.ControllerNamespace
         // GET: @routePrefix/Delete/5
         public IActionResult Delete(@primaryKeyShortTypeName id)
         {
-            @Model.ModelTypeName @Model.ModelVariable = null; // TODO: Add get item service logic here
+            @modelType @Model.ModelVariable = null; // TODO: Add get item service logic here
             if (@Model.ModelVariable == null)
             {
                 return NotFound();

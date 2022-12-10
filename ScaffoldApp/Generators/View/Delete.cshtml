@@ -2,7 +2,10 @@
 @using Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore
 @using System.Collections.Generic
 @using System.Linq
-@@model @Model.ViewDataTypeName
+@{
+    var viewModel = "@model " + Model.ViewDataTypeName + "Model";
+}
+@viewModel
 
 @{
     if (Model.IsPartialView)

@@ -33,7 +33,8 @@ namespace @Model.ControllerNamespace
     var serviceInterfaceType = "I" + Model.ModelTypeName + "Service";
     var serviceInterfaceName = Model.ModelVariable + "Service";
     var constructorLine = "public " + Model.ControllerName + "(" + serviceInterfaceType + " " + serviceInterfaceName + ")";
-    var listLine = "List<" + Model.ModelTypeName + "> " + Model.ModelVariable + "List = null;";
+    var modelType = Model.ModelTypeName + "Model";
+    var listLine = "List<" + modelType + "> " + Model.ModelVariable + "List = null;";
     var okLine = "return Ok(" + Model.ModelVariable + "List);";
 }
     [Route("api/[controller]")]
@@ -60,7 +61,7 @@ namespace @Model.ControllerNamespace
         [HttpGet("{id}")]
         public IActionResult Get(@primaryKeyShortTypeName id)
         {
-            @Model.ModelTypeName @Model.ModelVariable = null; // TODO: Add get item service logic here
+            @modelType @Model.ModelVariable = null; // TODO: Add get item service logic here
 			if (@Model.ModelVariable == null)
             {
                 return NotFound();
@@ -71,7 +72,7 @@ namespace @Model.ControllerNamespace
 		// POST: @routePrefix
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public IActionResult Post(@Model.ModelTypeName @Model.ModelVariable)
+        public IActionResult Post(@modelType @Model.ModelVariable)
         {
             // TODO: Add insert service logic here
 			return CreatedAtAction("Get", new { id = @(Model.ModelVariable).@primaryKeyName }, @Model.ModelVariable);
@@ -80,7 +81,7 @@ namespace @Model.ControllerNamespace
         // PUT: @routePrefix
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut]
-        public IActionResult Put(@Model.ModelTypeName @Model.ModelVariable)
+        public IActionResult Put(@modelType @Model.ModelVariable)
         {
             // TODO: Add update service logic here
             return NoContent();

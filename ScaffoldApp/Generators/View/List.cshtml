@@ -2,7 +2,12 @@
 @using Microsoft.VisualStudio.Web.CodeGeneration.EntityFrameworkCore
 @using System.Collections.Generic
 @using System.Linq
-@@model @GetEnumerableTypeExpression(Model.ViewDataTypeName)
+@{
+    var viewEnumerable = GetEnumerableTypeExpression(Model.ViewDataTypeName);
+    viewEnumerable = viewEnumerable.Insert(viewEnumerable.Length - 1, "Model");
+    var viewModel = "@model " + viewEnumerable;
+}
+@viewModel
 
 @{
     if (Model.IsPartialView)
