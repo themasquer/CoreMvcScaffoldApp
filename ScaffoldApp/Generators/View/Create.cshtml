@@ -3,9 +3,10 @@
 @using System.Collections.Generic
 @using System.Linq
 @{
-    var viewModel = "@model " + Model.ViewDataTypeName + "Model";
+    var viewModel = "@model " + Model.ViewDataTypeName.Split('.')[Model.ViewDataTypeName.Split('.').Length - 1] + "Model";
 }
 @viewModel
+@@*Model namespace using directive should be added to _ViewImports.cshtml.*@@
 
 @{
     if (Model.IsPartialView)

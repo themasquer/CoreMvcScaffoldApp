@@ -74,7 +74,7 @@ namespace ScaffoldApp
                     tbUserPath.Text = userPath;
                     return;
                 }
-                versionedDirectories = Directory.GetDirectories(tbUserPath.Text + @"\" + nugetPath).OrderBy(d => Convert.ToInt32(d.Split('\\').LastOrDefault().Split('.')[0])).ToList();
+                versionedDirectories = OrderDirectoriesByVersion(Directory.GetDirectories(tbUserPath.Text + @"\" + nugetPath).ToList());
                 if (versionedDirectories == null || versionedDirectories.Count == 0)
                 {
                     MessageBox.Show("Version directories could not be found!\n\nPlease use Entity Framework controller scaffolding once in your project!", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
@@ -101,6 +101,20 @@ namespace ScaffoldApp
                 controllerGeneratorUpdatePath = tbControllerPath.Text;
                 viewGeneratorUpdatePath = tbViewPath.Text;
             }
+        }
+
+        List<string> OrderDirectoriesByVersion(List<string> directories)
+        {
+            return directories
+                .OrderBy(d => Convert.ToInt32(GetVersionFromDirectory(d).Substring(GetVersionFromDirectory(d).LastIndexOf('.') + 1)))
+                .OrderBy(d => Convert.ToInt32(GetVersionFromDirectory(d).Substring(GetVersionFromDirectory(d).IndexOf('.') + 1, GetVersionFromDirectory(d).LastIndexOf('.') - GetVersionFromDirectory(d).IndexOf('.') - 1)))
+                .OrderBy(d => Convert.ToInt32(GetVersionFromDirectory(d).Substring(0, GetVersionFromDirectory(d).IndexOf('.'))))
+                .ToList();
+        }
+
+        string GetVersionFromDirectory(string directory)
+        {
+            return directory.Split('\\').LastOrDefault();
         }
 
         private void bUpdateInterface_Click(object sender, EventArgs e)

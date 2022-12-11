@@ -4,10 +4,10 @@
 @using System.Linq
 @{
     var viewEnumerable = GetEnumerableTypeExpression(Model.ViewDataTypeName);
-    viewEnumerable = viewEnumerable.Insert(viewEnumerable.Length - 1, "Model");
     var viewModel = "@model " + viewEnumerable;
 }
 @viewModel
+@@*Model namespace using directive should be added to _ViewImports.cshtml.*@@
 
 @{
     if (Model.IsPartialView)
@@ -142,6 +142,6 @@
 
     string GetEnumerableTypeExpression(string typeName)
     {
-        return "IEnumerable<" + typeName + ">";
+        return "IEnumerable<" + typeName.Split('.')[typeName.Split('.').Length - 1] + "Model>";
     }
 }
