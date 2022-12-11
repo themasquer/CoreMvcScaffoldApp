@@ -74,7 +74,7 @@ namespace ScaffoldApp
                     tbUserPath.Text = userPath;
                     return;
                 }
-                versionedDirectories = Directory.GetDirectories(tbUserPath.Text + @"\" + nugetPath).OrderBy(d => Convert.ToInt32(d.Split('\\').LastOrDefault().Replace(".", ""))).ToList();
+                versionedDirectories = Directory.GetDirectories(tbUserPath.Text + @"\" + nugetPath).OrderBy(d => Convert.ToInt32(d.Split('\\').LastOrDefault().Split('.')[0])).ToList();
                 if (versionedDirectories == null || versionedDirectories.Count == 0)
                 {
                     MessageBox.Show("Version directories could not be found!\n\nPlease use Entity Framework controller scaffolding once in your project!", "Warning!", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);

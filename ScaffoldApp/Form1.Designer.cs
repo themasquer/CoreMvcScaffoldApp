@@ -95,6 +95,7 @@
             this.tbVersion.Name = "tbVersion";
             this.tbVersion.Size = new System.Drawing.Size(125, 23);
             this.tbVersion.TabIndex = 39;
+            this.tbVersion.TextChanged += new System.EventHandler(this.tbVersion_TextChanged);
             // 
             // label6
             // 
@@ -199,6 +200,7 @@
             this.bViewOpen.TabIndex = 30;
             this.bViewOpen.Text = "Open";
             this.bViewOpen.UseVisualStyleBackColor = true;
+            this.bViewOpen.Click += new System.EventHandler(this.bViewOpen_Click);
             // 
             // tbViewPath
             // 
@@ -225,6 +227,7 @@
             this.bControllerOpen.TabIndex = 27;
             this.bControllerOpen.Text = "Open";
             this.bControllerOpen.UseVisualStyleBackColor = true;
+            this.bControllerOpen.Click += new System.EventHandler(this.bControllerOpen_Click);
             // 
             // tbControllerPath
             // 
@@ -251,6 +254,7 @@
             this.bReset.TabIndex = 24;
             this.bReset.Text = "Reset";
             this.bReset.UseVisualStyleBackColor = true;
+            this.bReset.Click += new System.EventHandler(this.bReset_Click);
             // 
             // bBrowse
             // 
@@ -260,6 +264,7 @@
             this.bBrowse.TabIndex = 23;
             this.bBrowse.Text = "Browse";
             this.bBrowse.UseVisualStyleBackColor = true;
+            this.bBrowse.Click += new System.EventHandler(this.bBrowse_Click);
             // 
             // bUpdateInterface
             // 
