@@ -27,8 +27,6 @@ namespace ScaffoldApp
         List<string> versionedDirectories;
         List<string> controllerGeneratorUpdateFolders;
         List<string> viewGeneratorUpdateFolders;
-        const string ADMINUSERNAME = "admin";
-        const string ADMINPASSWORD = "admin";
 
         public Form1()
         {
@@ -374,11 +372,6 @@ namespace ScaffoldApp
 
         private void bLogin_Click(object sender, EventArgs e)
         {
-            if (!(tbUserName.Text == ADMINUSERNAME && tbPassword.Text == ADMINPASSWORD))
-            {
-                MessageBox.Show("Invalid user name or password!", "Warning", MessageBoxButtons.OK, MessageBoxIcon.Warning, MessageBoxDefaultButton.Button1);
-                return;
-            }
             bDbContext.Visible = true;
             bUpdateAbstractClass.Visible = true;
             bUpdateAllModelAbstractClass.Visible = true;
@@ -391,21 +384,6 @@ namespace ScaffoldApp
         {
             pLogin.Visible = false;
             pMain.Visible = true;
-        }
-
-        private void bUpdateInterface_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void bBackup_Click_1(object sender, EventArgs e)
-        {
-
-        }
-
-        private void bUpdateAbstractClass_Click_1(object sender, EventArgs e)
-        {
-
         }
     }
 }

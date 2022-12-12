@@ -53,10 +53,6 @@
             this.pLogin = new System.Windows.Forms.Panel();
             this.bLoginAsVisitor = new System.Windows.Forms.Button();
             this.bLogin = new System.Windows.Forms.Button();
-            this.tbPassword = new System.Windows.Forms.TextBox();
-            this.tbUserName = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.label7 = new System.Windows.Forms.Label();
             this.pMain.SuspendLayout();
             this.pLogin.SuspendLayout();
             this.SuspendLayout();
@@ -299,10 +295,6 @@
             // 
             this.pLogin.Controls.Add(this.bLoginAsVisitor);
             this.pLogin.Controls.Add(this.bLogin);
-            this.pLogin.Controls.Add(this.tbPassword);
-            this.pLogin.Controls.Add(this.tbUserName);
-            this.pLogin.Controls.Add(this.label8);
-            this.pLogin.Controls.Add(this.label7);
             this.pLogin.Location = new System.Drawing.Point(12, 293);
             this.pLogin.Name = "pLogin";
             this.pLogin.Size = new System.Drawing.Size(967, 95);
@@ -310,56 +302,23 @@
             // 
             // bLoginAsVisitor
             // 
-            this.bLoginAsVisitor.Location = new System.Drawing.Point(77, 64);
+            this.bLoginAsVisitor.Location = new System.Drawing.Point(3, 3);
             this.bLoginAsVisitor.Name = "bLoginAsVisitor";
-            this.bLoginAsVisitor.Size = new System.Drawing.Size(106, 23);
+            this.bLoginAsVisitor.Size = new System.Drawing.Size(150, 23);
             this.bLoginAsVisitor.TabIndex = 43;
-            this.bLoginAsVisitor.Text = "Login as Visitor";
+            this.bLoginAsVisitor.Text = "Student Entry";
             this.bLoginAsVisitor.UseVisualStyleBackColor = true;
             this.bLoginAsVisitor.Click += new System.EventHandler(this.bLoginAsVisitor_Click);
             // 
             // bLogin
             // 
-            this.bLogin.Location = new System.Drawing.Point(189, 64);
+            this.bLogin.Location = new System.Drawing.Point(159, 3);
             this.bLogin.Name = "bLogin";
-            this.bLogin.Size = new System.Drawing.Size(88, 23);
+            this.bLogin.Size = new System.Drawing.Size(150, 23);
             this.bLogin.TabIndex = 42;
-            this.bLogin.Text = "Login";
+            this.bLogin.Text = "Developer Entry";
             this.bLogin.UseVisualStyleBackColor = true;
             this.bLogin.Click += new System.EventHandler(this.bLogin_Click);
-            // 
-            // tbPassword
-            // 
-            this.tbPassword.Location = new System.Drawing.Point(77, 35);
-            this.tbPassword.Name = "tbPassword";
-            this.tbPassword.PasswordChar = '*';
-            this.tbPassword.Size = new System.Drawing.Size(200, 23);
-            this.tbPassword.TabIndex = 41;
-            // 
-            // tbUserName
-            // 
-            this.tbUserName.Location = new System.Drawing.Point(77, 6);
-            this.tbUserName.Name = "tbUserName";
-            this.tbUserName.Size = new System.Drawing.Size(200, 23);
-            this.tbUserName.TabIndex = 40;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(3, 38);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(60, 15);
-            this.label8.TabIndex = 22;
-            this.label8.Text = "Password:";
-            // 
-            // label7
-            // 
-            this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(3, 9);
-            this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(68, 15);
-            this.label7.TabIndex = 21;
-            this.label7.Text = "User Name:";
             // 
             // Form1
             // 
@@ -375,7 +334,6 @@
             this.pMain.ResumeLayout(false);
             this.pMain.PerformLayout();
             this.pLogin.ResumeLayout(false);
-            this.pLogin.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -385,10 +343,6 @@
         private Panel pMain;
         private Panel pLogin;
         private Button bLogin;
-        private TextBox tbPassword;
-        private TextBox tbUserName;
-        private Label label8;
-        private Label label7;
         private TextBox tbVersion;
         private Label label6;
         private Button bUpdateAllModelAbstractClass;
