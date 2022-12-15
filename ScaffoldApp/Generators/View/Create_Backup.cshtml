@@ -52,7 +52,7 @@
                 {
             @:<div class="form-group">
                 @:<label asp-for="@property.PropertyName" class="control-label"></label>
-                @:<select asp-for="@property.PropertyName" class ="form-control" asp-items="ViewBag.@property.PropertyName"></select>
+                @:<select asp-for="@property.PropertyName" class ="form-select" asp-items="ViewBag.@property.PropertyName"></select>
             @:</div>
                     continue;
                 }
@@ -70,7 +70,7 @@
                 {
             @:<div class="form-group">
                 @:<label asp-for="@property.PropertyName" class="control-label"></label>
-                @:<select asp-for="@property.PropertyName" class="form-control"></select>
+                @:<select asp-for="@property.PropertyName" class="form-select"></select>
                 @:<span asp-validation-for="@property.PropertyName" class="text-danger"></span>
             @:</div>
                 }
