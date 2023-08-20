@@ -28,321 +28,282 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
-            this.pMain = new System.Windows.Forms.Panel();
-            this.tbVersion = new System.Windows.Forms.TextBox();
-            this.label6 = new System.Windows.Forms.Label();
-            this.bUpdateAllModelAbstractClass = new System.Windows.Forms.Button();
-            this.bUpdateAllEntityAbstractClass = new System.Windows.Forms.Button();
-            this.bUpdateAbstractClass = new System.Windows.Forms.Button();
-            this.label5 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.bDbContext = new System.Windows.Forms.Button();
-            this.bBackup = new System.Windows.Forms.Button();
-            this.bViewOpen = new System.Windows.Forms.Button();
-            this.tbViewPath = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.bControllerOpen = new System.Windows.Forms.Button();
-            this.tbControllerPath = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.bReset = new System.Windows.Forms.Button();
-            this.bBrowse = new System.Windows.Forms.Button();
-            this.bUpdateInterface = new System.Windows.Forms.Button();
-            this.tbUserPath = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.pLogin = new System.Windows.Forms.Panel();
-            this.bLoginAsVisitor = new System.Windows.Forms.Button();
-            this.bLogin = new System.Windows.Forms.Button();
-            this.pMain.SuspendLayout();
-            this.pLogin.SuspendLayout();
-            this.SuspendLayout();
+            folderBrowserDialog1 = new FolderBrowserDialog();
+            pMain = new Panel();
+            tbVersion = new TextBox();
+            label6 = new Label();
+            bUpdateAllModelAbstractClass = new Button();
+            bUpdateAllEntityAbstractClass = new Button();
+            bUpdateAbstractClass = new Button();
+            label5 = new Label();
+            label4 = new Label();
+            bDbContext = new Button();
+            bBackup = new Button();
+            bViewOpen = new Button();
+            tbViewPath = new TextBox();
+            label3 = new Label();
+            bControllerOpen = new Button();
+            tbControllerPath = new TextBox();
+            label2 = new Label();
+            bReset = new Button();
+            bBrowse = new Button();
+            bUpdateInterface = new Button();
+            tbUserPath = new TextBox();
+            label1 = new Label();
+            pMain.SuspendLayout();
+            SuspendLayout();
             // 
             // pMain
             // 
-            this.pMain.Controls.Add(this.tbVersion);
-            this.pMain.Controls.Add(this.label6);
-            this.pMain.Controls.Add(this.bUpdateAllModelAbstractClass);
-            this.pMain.Controls.Add(this.bUpdateAllEntityAbstractClass);
-            this.pMain.Controls.Add(this.bUpdateAbstractClass);
-            this.pMain.Controls.Add(this.label5);
-            this.pMain.Controls.Add(this.label4);
-            this.pMain.Controls.Add(this.bDbContext);
-            this.pMain.Controls.Add(this.bBackup);
-            this.pMain.Controls.Add(this.bViewOpen);
-            this.pMain.Controls.Add(this.tbViewPath);
-            this.pMain.Controls.Add(this.label3);
-            this.pMain.Controls.Add(this.bControllerOpen);
-            this.pMain.Controls.Add(this.tbControllerPath);
-            this.pMain.Controls.Add(this.label2);
-            this.pMain.Controls.Add(this.bReset);
-            this.pMain.Controls.Add(this.bBrowse);
-            this.pMain.Controls.Add(this.bUpdateInterface);
-            this.pMain.Controls.Add(this.tbUserPath);
-            this.pMain.Controls.Add(this.label1);
-            this.pMain.Location = new System.Drawing.Point(12, 12);
-            this.pMain.Name = "pMain";
-            this.pMain.Size = new System.Drawing.Size(967, 275);
-            this.pMain.TabIndex = 20;
-            this.pMain.Visible = false;
+            pMain.Controls.Add(tbVersion);
+            pMain.Controls.Add(label6);
+            pMain.Controls.Add(bUpdateAllModelAbstractClass);
+            pMain.Controls.Add(bUpdateAllEntityAbstractClass);
+            pMain.Controls.Add(bUpdateAbstractClass);
+            pMain.Controls.Add(label5);
+            pMain.Controls.Add(label4);
+            pMain.Controls.Add(bDbContext);
+            pMain.Controls.Add(bBackup);
+            pMain.Controls.Add(bViewOpen);
+            pMain.Controls.Add(tbViewPath);
+            pMain.Controls.Add(label3);
+            pMain.Controls.Add(bControllerOpen);
+            pMain.Controls.Add(tbControllerPath);
+            pMain.Controls.Add(label2);
+            pMain.Controls.Add(bReset);
+            pMain.Controls.Add(bBrowse);
+            pMain.Controls.Add(bUpdateInterface);
+            pMain.Controls.Add(tbUserPath);
+            pMain.Controls.Add(label1);
+            pMain.Location = new Point(12, 12);
+            pMain.Name = "pMain";
+            pMain.Size = new Size(967, 275);
+            pMain.TabIndex = 20;
             // 
             // tbVersion
             // 
-            this.tbVersion.Location = new System.Drawing.Point(381, 35);
-            this.tbVersion.Name = "tbVersion";
-            this.tbVersion.Size = new System.Drawing.Size(125, 23);
-            this.tbVersion.TabIndex = 39;
-            this.tbVersion.TextChanged += new System.EventHandler(this.tbVersion_TextChanged);
+            tbVersion.Location = new Point(381, 35);
+            tbVersion.Name = "tbVersion";
+            tbVersion.Size = new Size(125, 23);
+            tbVersion.TabIndex = 39;
+            tbVersion.TextChanged += tbVersion_TextChanged;
             // 
             // label6
             // 
-            this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(3, 38);
-            this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(372, 15);
-            this.label6.TabIndex = 38;
-            this.label6.Text = "Microsoft.VisualStudio.Web.CodeGeneration.Design Package Version:";
+            label6.AutoSize = true;
+            label6.Location = new Point(3, 38);
+            label6.Name = "label6";
+            label6.Size = new Size(372, 15);
+            label6.TabIndex = 38;
+            label6.Text = "Microsoft.VisualStudio.Web.CodeGeneration.Design Package Version:";
             // 
             // bUpdateAllModelAbstractClass
             // 
-            this.bUpdateAllModelAbstractClass.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.bUpdateAllModelAbstractClass.ForeColor = System.Drawing.Color.Red;
-            this.bUpdateAllModelAbstractClass.Location = new System.Drawing.Point(575, 64);
-            this.bUpdateAllModelAbstractClass.Name = "bUpdateAllModelAbstractClass";
-            this.bUpdateAllModelAbstractClass.Size = new System.Drawing.Size(388, 23);
-            this.bUpdateAllModelAbstractClass.TabIndex = 37;
-            this.bUpdateAllModelAbstractClass.Text = "Update Using Abstract Model Service Class for AppCoreLite";
-            this.bUpdateAllModelAbstractClass.UseVisualStyleBackColor = true;
-            this.bUpdateAllModelAbstractClass.Visible = false;
-            this.bUpdateAllModelAbstractClass.Click += new System.EventHandler(this.bUpdateAllModelAbstractClass_Click);
+            bUpdateAllModelAbstractClass.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            bUpdateAllModelAbstractClass.ForeColor = Color.Red;
+            bUpdateAllModelAbstractClass.Location = new Point(368, 93);
+            bUpdateAllModelAbstractClass.Name = "bUpdateAllModelAbstractClass";
+            bUpdateAllModelAbstractClass.Size = new Size(350, 23);
+            bUpdateAllModelAbstractClass.TabIndex = 37;
+            bUpdateAllModelAbstractClass.Text = "Update Using Abstract Model Service Class for AppCoreLite";
+            bUpdateAllModelAbstractClass.UseVisualStyleBackColor = true;
+            bUpdateAllModelAbstractClass.Visible = false;
+            bUpdateAllModelAbstractClass.Click += bUpdateAllModelAbstractClass_Click;
             // 
             // bUpdateAllEntityAbstractClass
             // 
-            this.bUpdateAllEntityAbstractClass.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.bUpdateAllEntityAbstractClass.ForeColor = System.Drawing.Color.Red;
-            this.bUpdateAllEntityAbstractClass.Location = new System.Drawing.Point(575, 93);
-            this.bUpdateAllEntityAbstractClass.Name = "bUpdateAllEntityAbstractClass";
-            this.bUpdateAllEntityAbstractClass.Size = new System.Drawing.Size(388, 23);
-            this.bUpdateAllEntityAbstractClass.TabIndex = 36;
-            this.bUpdateAllEntityAbstractClass.Text = "Update Using Abstract Entity Service Class for AppCoreLite";
-            this.bUpdateAllEntityAbstractClass.UseVisualStyleBackColor = true;
-            this.bUpdateAllEntityAbstractClass.Visible = false;
-            this.bUpdateAllEntityAbstractClass.Click += new System.EventHandler(this.bUpdateAllEntityAbstractClass_Click);
+            bUpdateAllEntityAbstractClass.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            bUpdateAllEntityAbstractClass.ForeColor = Color.Red;
+            bUpdateAllEntityAbstractClass.Location = new Point(12, 93);
+            bUpdateAllEntityAbstractClass.Name = "bUpdateAllEntityAbstractClass";
+            bUpdateAllEntityAbstractClass.Size = new Size(350, 23);
+            bUpdateAllEntityAbstractClass.TabIndex = 36;
+            bUpdateAllEntityAbstractClass.Text = "Update Using Abstract Entity Service Class for AppCoreLite";
+            bUpdateAllEntityAbstractClass.UseVisualStyleBackColor = true;
+            bUpdateAllEntityAbstractClass.Visible = false;
+            bUpdateAllEntityAbstractClass.Click += bUpdateAllEntityAbstractClass_Click;
             // 
             // bUpdateAbstractClass
             // 
-            this.bUpdateAbstractClass.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.bUpdateAbstractClass.ForeColor = System.Drawing.Color.Red;
-            this.bUpdateAbstractClass.Location = new System.Drawing.Point(319, 64);
-            this.bUpdateAbstractClass.Name = "bUpdateAbstractClass";
-            this.bUpdateAbstractClass.Size = new System.Drawing.Size(250, 23);
-            this.bUpdateAbstractClass.TabIndex = 35;
-            this.bUpdateAbstractClass.Text = "Update Using Abstract Service Class";
-            this.bUpdateAbstractClass.UseVisualStyleBackColor = true;
-            this.bUpdateAbstractClass.Visible = false;
-            this.bUpdateAbstractClass.Click += new System.EventHandler(this.bUpdateAbstractClass_Click);
+            bUpdateAbstractClass.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            bUpdateAbstractClass.ForeColor = Color.Red;
+            bUpdateAbstractClass.Location = new Point(12, 64);
+            bUpdateAbstractClass.Name = "bUpdateAbstractClass";
+            bUpdateAbstractClass.Size = new Size(350, 23);
+            bUpdateAbstractClass.TabIndex = 35;
+            bUpdateAbstractClass.Text = "Update Using Abstract Service Class";
+            bUpdateAbstractClass.UseVisualStyleBackColor = true;
+            bUpdateAbstractClass.Visible = false;
+            bUpdateAbstractClass.Click += bUpdateAbstractClass_Click;
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(3, 250);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(409, 15);
-            this.label5.TabIndex = 34;
-            this.label5.Text = "If the problem is not solved, update Visual Studio with Visual Studio Installer.";
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label5.Location = new Point(3, 250);
+            label5.Name = "label5";
+            label5.Size = new Size(409, 15);
+            label5.TabIndex = 34;
+            label5.Text = "If the problem is not solved, update Visual Studio with Visual Studio Installer.";
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(3, 226);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(947, 15);
-            this.label4.TabIndex = 33;
-            this.label4.Text = "If you have any problems about scaffolding with Entity Framework in your MVC Appl" +
-    "ication, first update all your Nuget Packages in all projects in the solution to" +
-    " the latest version.";
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            label4.Location = new Point(3, 226);
+            label4.Name = "label4";
+            label4.Size = new Size(947, 15);
+            label4.TabIndex = 33;
+            label4.Text = "If you have any problems about scaffolding with Entity Framework in your MVC Application, first update all your Nuget Packages in all projects in the solution to the latest version.";
             // 
             // bDbContext
             // 
-            this.bDbContext.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.bDbContext.ForeColor = System.Drawing.Color.Red;
-            this.bDbContext.Location = new System.Drawing.Point(319, 93);
-            this.bDbContext.Name = "bDbContext";
-            this.bDbContext.Size = new System.Drawing.Size(250, 23);
-            this.bDbContext.TabIndex = 32;
-            this.bDbContext.Text = "Update With DbContext";
-            this.bDbContext.UseVisualStyleBackColor = true;
-            this.bDbContext.Visible = false;
-            this.bDbContext.Click += new System.EventHandler(this.bDbContext_Click);
+            bDbContext.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            bDbContext.ForeColor = Color.Red;
+            bDbContext.Location = new Point(724, 93);
+            bDbContext.Name = "bDbContext";
+            bDbContext.Size = new Size(226, 23);
+            bDbContext.TabIndex = 32;
+            bDbContext.Text = "Update With DbContext";
+            bDbContext.UseVisualStyleBackColor = true;
+            bDbContext.Visible = false;
+            bDbContext.Click += bDbContext_Click;
             // 
             // bBackup
             // 
-            this.bBackup.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.bBackup.ForeColor = System.Drawing.Color.Red;
-            this.bBackup.Location = new System.Drawing.Point(3, 93);
-            this.bBackup.Name = "bBackup";
-            this.bBackup.Size = new System.Drawing.Size(310, 23);
-            this.bBackup.TabIndex = 31;
-            this.bBackup.Text = "Restore Microsoft Backup Files";
-            this.bBackup.UseVisualStyleBackColor = true;
-            this.bBackup.Click += new System.EventHandler(this.bBackup_Click);
+            bBackup.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            bBackup.ForeColor = Color.Red;
+            bBackup.Location = new Point(724, 64);
+            bBackup.Name = "bBackup";
+            bBackup.Size = new Size(226, 23);
+            bBackup.TabIndex = 31;
+            bBackup.Text = "Restore Microsoft Backup Files";
+            bBackup.UseVisualStyleBackColor = true;
+            bBackup.Visible = false;
+            bBackup.Click += bBackup_Click;
             // 
             // bViewOpen
             // 
-            this.bViewOpen.Location = new System.Drawing.Point(888, 174);
-            this.bViewOpen.Name = "bViewOpen";
-            this.bViewOpen.Size = new System.Drawing.Size(75, 23);
-            this.bViewOpen.TabIndex = 30;
-            this.bViewOpen.Text = "Open";
-            this.bViewOpen.UseVisualStyleBackColor = true;
-            this.bViewOpen.Click += new System.EventHandler(this.bViewOpen_Click);
+            bViewOpen.Location = new Point(888, 174);
+            bViewOpen.Name = "bViewOpen";
+            bViewOpen.Size = new Size(75, 23);
+            bViewOpen.TabIndex = 30;
+            bViewOpen.Text = "Open";
+            bViewOpen.UseVisualStyleBackColor = true;
+            bViewOpen.Click += bViewOpen_Click;
             // 
             // tbViewPath
             // 
-            this.tbViewPath.Location = new System.Drawing.Point(171, 174);
-            this.tbViewPath.Name = "tbViewPath";
-            this.tbViewPath.ReadOnly = true;
-            this.tbViewPath.Size = new System.Drawing.Size(711, 23);
-            this.tbViewPath.TabIndex = 29;
+            tbViewPath.Location = new Point(171, 174);
+            tbViewPath.Name = "tbViewPath";
+            tbViewPath.ReadOnly = true;
+            tbViewPath.Size = new Size(711, 23);
+            tbViewPath.TabIndex = 29;
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(3, 177);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(134, 15);
-            this.label3.TabIndex = 28;
-            this.label3.Text = "Scaffolding View Folder:";
+            label3.AutoSize = true;
+            label3.Location = new Point(3, 177);
+            label3.Name = "label3";
+            label3.Size = new Size(134, 15);
+            label3.TabIndex = 28;
+            label3.Text = "Scaffolding View Folder:";
             // 
             // bControllerOpen
             // 
-            this.bControllerOpen.Location = new System.Drawing.Point(888, 145);
-            this.bControllerOpen.Name = "bControllerOpen";
-            this.bControllerOpen.Size = new System.Drawing.Size(75, 23);
-            this.bControllerOpen.TabIndex = 27;
-            this.bControllerOpen.Text = "Open";
-            this.bControllerOpen.UseVisualStyleBackColor = true;
-            this.bControllerOpen.Click += new System.EventHandler(this.bControllerOpen_Click);
+            bControllerOpen.Location = new Point(888, 145);
+            bControllerOpen.Name = "bControllerOpen";
+            bControllerOpen.Size = new Size(75, 23);
+            bControllerOpen.TabIndex = 27;
+            bControllerOpen.Text = "Open";
+            bControllerOpen.UseVisualStyleBackColor = true;
+            bControllerOpen.Click += bControllerOpen_Click;
             // 
             // tbControllerPath
             // 
-            this.tbControllerPath.Location = new System.Drawing.Point(171, 145);
-            this.tbControllerPath.Name = "tbControllerPath";
-            this.tbControllerPath.ReadOnly = true;
-            this.tbControllerPath.Size = new System.Drawing.Size(711, 23);
-            this.tbControllerPath.TabIndex = 26;
+            tbControllerPath.Location = new Point(171, 145);
+            tbControllerPath.Name = "tbControllerPath";
+            tbControllerPath.ReadOnly = true;
+            tbControllerPath.Size = new Size(711, 23);
+            tbControllerPath.TabIndex = 26;
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(3, 148);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(162, 15);
-            this.label2.TabIndex = 25;
-            this.label2.Text = "Scaffolding Controller Folder:";
+            label2.AutoSize = true;
+            label2.Location = new Point(3, 148);
+            label2.Name = "label2";
+            label2.Size = new Size(162, 15);
+            label2.TabIndex = 25;
+            label2.Text = "Scaffolding Controller Folder:";
             // 
             // bReset
             // 
-            this.bReset.Location = new System.Drawing.Point(888, 5);
-            this.bReset.Name = "bReset";
-            this.bReset.Size = new System.Drawing.Size(75, 23);
-            this.bReset.TabIndex = 24;
-            this.bReset.Text = "Reset";
-            this.bReset.UseVisualStyleBackColor = true;
-            this.bReset.Click += new System.EventHandler(this.bReset_Click);
+            bReset.Location = new Point(888, 5);
+            bReset.Name = "bReset";
+            bReset.Size = new Size(75, 23);
+            bReset.TabIndex = 24;
+            bReset.Text = "Reset";
+            bReset.UseVisualStyleBackColor = true;
+            bReset.Click += bReset_Click;
             // 
             // bBrowse
             // 
-            this.bBrowse.Location = new System.Drawing.Point(807, 5);
-            this.bBrowse.Name = "bBrowse";
-            this.bBrowse.Size = new System.Drawing.Size(75, 23);
-            this.bBrowse.TabIndex = 23;
-            this.bBrowse.Text = "Browse";
-            this.bBrowse.UseVisualStyleBackColor = true;
-            this.bBrowse.Click += new System.EventHandler(this.bBrowse_Click);
+            bBrowse.Location = new Point(807, 5);
+            bBrowse.Name = "bBrowse";
+            bBrowse.Size = new Size(75, 23);
+            bBrowse.TabIndex = 23;
+            bBrowse.Text = "Browse";
+            bBrowse.UseVisualStyleBackColor = true;
+            bBrowse.Click += bBrowse_Click;
             // 
             // bUpdateInterface
             // 
-            this.bUpdateInterface.Font = new System.Drawing.Font("Segoe UI", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.bUpdateInterface.ForeColor = System.Drawing.Color.Red;
-            this.bUpdateInterface.Location = new System.Drawing.Point(3, 64);
-            this.bUpdateInterface.Name = "bUpdateInterface";
-            this.bUpdateInterface.Size = new System.Drawing.Size(310, 23);
-            this.bUpdateInterface.TabIndex = 22;
-            this.bUpdateInterface.Text = "Update Using Service Interface";
-            this.bUpdateInterface.UseVisualStyleBackColor = true;
-            this.bUpdateInterface.Click += new System.EventHandler(this.bUpdateInterface_Click);
+            bUpdateInterface.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            bUpdateInterface.ForeColor = Color.Red;
+            bUpdateInterface.Location = new Point(368, 64);
+            bUpdateInterface.Name = "bUpdateInterface";
+            bUpdateInterface.Size = new Size(350, 23);
+            bUpdateInterface.TabIndex = 22;
+            bUpdateInterface.Text = "Update Using Service Interface";
+            bUpdateInterface.UseVisualStyleBackColor = true;
+            bUpdateInterface.Visible = false;
+            bUpdateInterface.Click += bUpdateInterface_Click;
             // 
             // tbUserPath
             // 
-            this.tbUserPath.Location = new System.Drawing.Point(130, 6);
-            this.tbUserPath.Name = "tbUserPath";
-            this.tbUserPath.ReadOnly = true;
-            this.tbUserPath.Size = new System.Drawing.Size(671, 23);
-            this.tbUserPath.TabIndex = 21;
+            tbUserPath.Location = new Point(130, 6);
+            tbUserPath.Name = "tbUserPath";
+            tbUserPath.ReadOnly = true;
+            tbUserPath.Size = new Size(671, 23);
+            tbUserPath.TabIndex = 21;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(3, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(121, 15);
-            this.label1.TabIndex = 20;
-            this.label1.Text = "Windows User Folder:";
-            // 
-            // pLogin
-            // 
-            this.pLogin.Controls.Add(this.bLoginAsVisitor);
-            this.pLogin.Controls.Add(this.bLogin);
-            this.pLogin.Location = new System.Drawing.Point(12, 293);
-            this.pLogin.Name = "pLogin";
-            this.pLogin.Size = new System.Drawing.Size(967, 95);
-            this.pLogin.TabIndex = 21;
-            // 
-            // bLoginAsVisitor
-            // 
-            this.bLoginAsVisitor.Location = new System.Drawing.Point(3, 3);
-            this.bLoginAsVisitor.Name = "bLoginAsVisitor";
-            this.bLoginAsVisitor.Size = new System.Drawing.Size(150, 23);
-            this.bLoginAsVisitor.TabIndex = 43;
-            this.bLoginAsVisitor.Text = "Student Entry";
-            this.bLoginAsVisitor.UseVisualStyleBackColor = true;
-            this.bLoginAsVisitor.Click += new System.EventHandler(this.bLoginAsVisitor_Click);
-            // 
-            // bLogin
-            // 
-            this.bLogin.Location = new System.Drawing.Point(159, 3);
-            this.bLogin.Name = "bLogin";
-            this.bLogin.Size = new System.Drawing.Size(150, 23);
-            this.bLogin.TabIndex = 42;
-            this.bLogin.Text = "Developer Entry";
-            this.bLogin.UseVisualStyleBackColor = true;
-            this.bLogin.Click += new System.EventHandler(this.bLogin_Click);
+            label1.AutoSize = true;
+            label1.Location = new Point(3, 9);
+            label1.Name = "label1";
+            label1.Size = new Size(121, 15);
+            label1.TabIndex = 20;
+            label1.Text = "Windows User Folder:";
             // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(989, 394);
-            this.Controls.Add(this.pLogin);
-            this.Controls.Add(this.pMain);
-            this.Name = "Form1";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Scaffold App";
-            this.Load += new System.EventHandler(this.Form1_Load);
-            this.pMain.ResumeLayout(false);
-            this.pMain.PerformLayout();
-            this.pLogin.ResumeLayout(false);
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(989, 299);
+            Controls.Add(pMain);
+            Name = "Form1";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Scaffold App";
+            Load += Form1_Load;
+            pMain.ResumeLayout(false);
+            pMain.PerformLayout();
+            ResumeLayout(false);
         }
 
         #endregion
         private FolderBrowserDialog folderBrowserDialog1;
         private Panel pMain;
-        private Panel pLogin;
-        private Button bLogin;
         private TextBox tbVersion;
         private Label label6;
         private Button bUpdateAllModelAbstractClass;
@@ -363,6 +324,5 @@
         private Button bUpdateInterface;
         private TextBox tbUserPath;
         private Label label1;
-        private Button bLoginAsVisitor;
     }
 }

@@ -4,6 +4,8 @@ namespace ScaffoldApp
 {
     public partial class Form1 : Form
     {
+        bool _showAllButtons = false;
+
         string startupPath;
         string userPath;
         string nuget;
@@ -37,7 +39,15 @@ namespace ScaffoldApp
         {
             try
             {
-                pLogin.Location = new Point(12, 12);
+                bUpdateAbstractClass.Visible = true;
+                bBackup.Visible = true;
+                if (_showAllButtons)
+                {
+                    bUpdateInterface.Visible = true;
+                    bUpdateAllEntityAbstractClass.Visible = true;
+                    bUpdateAllModelAbstractClass.Visible = true;
+                    bDbContext.Visible = true;
+                }
                 this.Size = new Size(1005, 333);
                 startupPath = Application.StartupPath.Replace(@"bin\Debug\net6.0-windows", "").Replace(@"bin\Release\net6.0-windows", "");
                 userPath = @"C:\Users\" + Environment.UserName;
@@ -368,22 +378,6 @@ namespace ScaffoldApp
                 viewGeneratorUpdatePath = string.Join(@"\", viewGeneratorUpdateFolders);
                 tbViewPath.Text = viewGeneratorUpdatePath;
             }
-        }
-
-        private void bLogin_Click(object sender, EventArgs e)
-        {
-            bDbContext.Visible = true;
-            bUpdateAbstractClass.Visible = true;
-            bUpdateAllModelAbstractClass.Visible = true;
-            bUpdateAllEntityAbstractClass.Visible = true;
-            pLogin.Visible = false;
-            pMain.Visible = true;
-        }
-
-        private void bLoginAsVisitor_Click(object sender, EventArgs e)
-        {
-            pLogin.Visible = false;
-            pMain.Visible = true;
         }
     }
 }
