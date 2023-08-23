@@ -15,6 +15,7 @@ namespace ScaffoldApp
         string _abstractClass;
         string _entityAll;
         string _modelAll;
+        string _entityService;
         string _templates;
         string[] userDirectories;
         string nugetPath;
@@ -48,7 +49,6 @@ namespace ScaffoldApp
                     bUpdateAllModelAbstractClass.Visible = true;
                     bDbContext.Visible = true;
                 }
-                this.Size = new Size(1005, 333);
                 startupPath = Application.StartupPath.Replace(@"bin\Debug\net6.0-windows", "").Replace(@"bin\Release\net6.0-windows", "");
                 userPath = @"C:\Users\" + Environment.UserName;
                 nuget = ".nuget";
@@ -58,6 +58,7 @@ namespace ScaffoldApp
                 _abstractClass = "_AbstractClass";
                 _entityAll = "_EntityAll";
                 _modelAll = "_ModelAll";
+                _entityService = "_EntityService";
                 _templates = "Templates";
                 nugetPath = nuget + @"\packages\microsoft.visualstudio.web.codegenerators.mvc";
                 controllerGeneratorPath = _templates + @"\ControllerGenerator";
@@ -377,6 +378,33 @@ namespace ScaffoldApp
                 viewGeneratorUpdateFolders[viewGeneratorUpdateFolders.IndexOf(_templates) - 1] = tbVersion.Text.Trim();
                 viewGeneratorUpdatePath = string.Join(@"\", viewGeneratorUpdateFolders);
                 tbViewPath.Text = viewGeneratorUpdatePath;
+            }
+        }
+
+        private void bUpdateEntityService_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                UpdateControllerAndViewPaths(false);
+                files = Directory.GetFiles(startupPath + @"\Generators\Controller").Where(f => f.Contains(_entityService)).ToArray();
+                foreach (var file in files)
+                {
+                    sourceFileName = Path.GetFileName(file);
+                    destinationFileName = Path.Combine(controllerGeneratorUpdatePath, sourceFileName.Replace(_entityService, ""));
+                    File.Copy(file, destinationFileName, true);
+                }
+                files = Directory.GetFiles(startupPath + @"\Generators\View").Where(f => f.Contains(_entityService)).ToArray();
+                foreach (var file in files)
+                {
+                    sourceFileName = Path.GetFileName(file);
+                    destinationFileName = Path.Combine(viewGeneratorUpdatePath, sourceFileName.Replace(_entityService, ""));
+                    File.Copy(file, destinationFileName, true);
+                }
+                MessageBox.Show("Files copied successfully.", "Information", MessageBoxButtons.OK, MessageBoxIcon.Information, MessageBoxDefaultButton.Button1);
+            }
+            catch (Exception exc)
+            {
+                MessageBox.Show("An error occured during copying files!", "Error!", MessageBoxButtons.OK, MessageBoxIcon.Error, MessageBoxDefaultButton.Button1);
             }
         }
     }

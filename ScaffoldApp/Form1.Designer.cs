@@ -30,14 +30,17 @@
         {
             folderBrowserDialog1 = new FolderBrowserDialog();
             pMain = new Panel();
-            tbVersion = new TextBox();
-            label6 = new Label();
+            pOther = new Panel();
+            bUpdateAbstractClass = new Button();
+            bUpdateInterface = new Button();
+            bDbContext = new Button();
             bUpdateAllModelAbstractClass = new Button();
             bUpdateAllEntityAbstractClass = new Button();
-            bUpdateAbstractClass = new Button();
+            bUpdateEntityService = new Button();
+            tbVersion = new TextBox();
+            label6 = new Label();
             label5 = new Label();
             label4 = new Label();
-            bDbContext = new Button();
             bBackup = new Button();
             bViewOpen = new Button();
             tbViewPath = new TextBox();
@@ -47,22 +50,20 @@
             label2 = new Label();
             bReset = new Button();
             bBrowse = new Button();
-            bUpdateInterface = new Button();
             tbUserPath = new TextBox();
             label1 = new Label();
             pMain.SuspendLayout();
+            pOther.SuspendLayout();
             SuspendLayout();
             // 
             // pMain
             // 
+            pMain.Controls.Add(pOther);
+            pMain.Controls.Add(bUpdateEntityService);
             pMain.Controls.Add(tbVersion);
             pMain.Controls.Add(label6);
-            pMain.Controls.Add(bUpdateAllModelAbstractClass);
-            pMain.Controls.Add(bUpdateAllEntityAbstractClass);
-            pMain.Controls.Add(bUpdateAbstractClass);
             pMain.Controls.Add(label5);
             pMain.Controls.Add(label4);
-            pMain.Controls.Add(bDbContext);
             pMain.Controls.Add(bBackup);
             pMain.Controls.Add(bViewOpen);
             pMain.Controls.Add(tbViewPath);
@@ -72,13 +73,97 @@
             pMain.Controls.Add(label2);
             pMain.Controls.Add(bReset);
             pMain.Controls.Add(bBrowse);
-            pMain.Controls.Add(bUpdateInterface);
             pMain.Controls.Add(tbUserPath);
             pMain.Controls.Add(label1);
             pMain.Location = new Point(12, 12);
             pMain.Name = "pMain";
-            pMain.Size = new Size(967, 275);
+            pMain.Size = new Size(967, 320);
             pMain.TabIndex = 20;
+            // 
+            // pOther
+            // 
+            pOther.Controls.Add(bUpdateAbstractClass);
+            pOther.Controls.Add(bUpdateInterface);
+            pOther.Controls.Add(bDbContext);
+            pOther.Controls.Add(bUpdateAllModelAbstractClass);
+            pOther.Controls.Add(bUpdateAllEntityAbstractClass);
+            pOther.Location = new Point(8, 102);
+            pOther.Name = "pOther";
+            pOther.Size = new Size(955, 76);
+            pOther.TabIndex = 41;
+            pOther.Visible = false;
+            // 
+            // bUpdateAbstractClass
+            // 
+            bUpdateAbstractClass.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            bUpdateAbstractClass.ForeColor = Color.Red;
+            bUpdateAbstractClass.Location = new Point(9, 12);
+            bUpdateAbstractClass.Name = "bUpdateAbstractClass";
+            bUpdateAbstractClass.Size = new Size(350, 23);
+            bUpdateAbstractClass.TabIndex = 35;
+            bUpdateAbstractClass.Text = "Update Using Abstract Service Class";
+            bUpdateAbstractClass.UseVisualStyleBackColor = true;
+            bUpdateAbstractClass.Click += bUpdateAbstractClass_Click;
+            // 
+            // bUpdateInterface
+            // 
+            bUpdateInterface.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            bUpdateInterface.ForeColor = Color.Red;
+            bUpdateInterface.Location = new Point(365, 12);
+            bUpdateInterface.Name = "bUpdateInterface";
+            bUpdateInterface.Size = new Size(350, 23);
+            bUpdateInterface.TabIndex = 22;
+            bUpdateInterface.Text = "Update Using Service Interface";
+            bUpdateInterface.UseVisualStyleBackColor = true;
+            bUpdateInterface.Click += bUpdateInterface_Click;
+            // 
+            // bDbContext
+            // 
+            bDbContext.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            bDbContext.ForeColor = Color.Red;
+            bDbContext.Location = new Point(721, 12);
+            bDbContext.Name = "bDbContext";
+            bDbContext.Size = new Size(226, 23);
+            bDbContext.TabIndex = 32;
+            bDbContext.Text = "Update With DbContext";
+            bDbContext.UseVisualStyleBackColor = true;
+            bDbContext.Click += bDbContext_Click;
+            // 
+            // bUpdateAllModelAbstractClass
+            // 
+            bUpdateAllModelAbstractClass.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            bUpdateAllModelAbstractClass.ForeColor = Color.Red;
+            bUpdateAllModelAbstractClass.Location = new Point(365, 41);
+            bUpdateAllModelAbstractClass.Name = "bUpdateAllModelAbstractClass";
+            bUpdateAllModelAbstractClass.Size = new Size(350, 23);
+            bUpdateAllModelAbstractClass.TabIndex = 37;
+            bUpdateAllModelAbstractClass.Text = "Update Using Abstract Model Service Class for AppCoreLite";
+            bUpdateAllModelAbstractClass.UseVisualStyleBackColor = true;
+            bUpdateAllModelAbstractClass.Click += bUpdateAllModelAbstractClass_Click;
+            // 
+            // bUpdateAllEntityAbstractClass
+            // 
+            bUpdateAllEntityAbstractClass.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            bUpdateAllEntityAbstractClass.ForeColor = Color.Red;
+            bUpdateAllEntityAbstractClass.Location = new Point(9, 41);
+            bUpdateAllEntityAbstractClass.Name = "bUpdateAllEntityAbstractClass";
+            bUpdateAllEntityAbstractClass.Size = new Size(350, 23);
+            bUpdateAllEntityAbstractClass.TabIndex = 36;
+            bUpdateAllEntityAbstractClass.Text = "Update Using Abstract Entity Service Class for AppCoreLite";
+            bUpdateAllEntityAbstractClass.UseVisualStyleBackColor = true;
+            bUpdateAllEntityAbstractClass.Click += bUpdateAllEntityAbstractClass_Click;
+            // 
+            // bUpdateEntityService
+            // 
+            bUpdateEntityService.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            bUpdateEntityService.ForeColor = Color.Red;
+            bUpdateEntityService.Location = new Point(12, 73);
+            bUpdateEntityService.Name = "bUpdateEntityService";
+            bUpdateEntityService.Size = new Size(350, 23);
+            bUpdateEntityService.TabIndex = 40;
+            bUpdateEntityService.Text = "Update Using Entity Service Class";
+            bUpdateEntityService.UseVisualStyleBackColor = true;
+            bUpdateEntityService.Click += bUpdateEntityService_Click;
             // 
             // tbVersion
             // 
@@ -97,50 +182,11 @@
             label6.TabIndex = 38;
             label6.Text = "Microsoft.VisualStudio.Web.CodeGeneration.Design Package Version:";
             // 
-            // bUpdateAllModelAbstractClass
-            // 
-            bUpdateAllModelAbstractClass.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            bUpdateAllModelAbstractClass.ForeColor = Color.Red;
-            bUpdateAllModelAbstractClass.Location = new Point(368, 93);
-            bUpdateAllModelAbstractClass.Name = "bUpdateAllModelAbstractClass";
-            bUpdateAllModelAbstractClass.Size = new Size(350, 23);
-            bUpdateAllModelAbstractClass.TabIndex = 37;
-            bUpdateAllModelAbstractClass.Text = "Update Using Abstract Model Service Class for AppCoreLite";
-            bUpdateAllModelAbstractClass.UseVisualStyleBackColor = true;
-            bUpdateAllModelAbstractClass.Visible = false;
-            bUpdateAllModelAbstractClass.Click += bUpdateAllModelAbstractClass_Click;
-            // 
-            // bUpdateAllEntityAbstractClass
-            // 
-            bUpdateAllEntityAbstractClass.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            bUpdateAllEntityAbstractClass.ForeColor = Color.Red;
-            bUpdateAllEntityAbstractClass.Location = new Point(12, 93);
-            bUpdateAllEntityAbstractClass.Name = "bUpdateAllEntityAbstractClass";
-            bUpdateAllEntityAbstractClass.Size = new Size(350, 23);
-            bUpdateAllEntityAbstractClass.TabIndex = 36;
-            bUpdateAllEntityAbstractClass.Text = "Update Using Abstract Entity Service Class for AppCoreLite";
-            bUpdateAllEntityAbstractClass.UseVisualStyleBackColor = true;
-            bUpdateAllEntityAbstractClass.Visible = false;
-            bUpdateAllEntityAbstractClass.Click += bUpdateAllEntityAbstractClass_Click;
-            // 
-            // bUpdateAbstractClass
-            // 
-            bUpdateAbstractClass.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            bUpdateAbstractClass.ForeColor = Color.Red;
-            bUpdateAbstractClass.Location = new Point(12, 64);
-            bUpdateAbstractClass.Name = "bUpdateAbstractClass";
-            bUpdateAbstractClass.Size = new Size(350, 23);
-            bUpdateAbstractClass.TabIndex = 35;
-            bUpdateAbstractClass.Text = "Update Using Abstract Service Class";
-            bUpdateAbstractClass.UseVisualStyleBackColor = true;
-            bUpdateAbstractClass.Visible = false;
-            bUpdateAbstractClass.Click += bUpdateAbstractClass_Click;
-            // 
             // label5
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label5.Location = new Point(3, 250);
+            label5.Location = new Point(3, 295);
             label5.Name = "label5";
             label5.Size = new Size(409, 15);
             label5.TabIndex = 34;
@@ -150,41 +196,27 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(3, 226);
+            label4.Location = new Point(3, 271);
             label4.Name = "label4";
             label4.Size = new Size(947, 15);
             label4.TabIndex = 33;
             label4.Text = "If you have any problems about scaffolding with Entity Framework in your MVC Application, first update all your Nuget Packages in all projects in the solution to the latest version.";
             // 
-            // bDbContext
-            // 
-            bDbContext.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            bDbContext.ForeColor = Color.Red;
-            bDbContext.Location = new Point(724, 93);
-            bDbContext.Name = "bDbContext";
-            bDbContext.Size = new Size(226, 23);
-            bDbContext.TabIndex = 32;
-            bDbContext.Text = "Update With DbContext";
-            bDbContext.UseVisualStyleBackColor = true;
-            bDbContext.Visible = false;
-            bDbContext.Click += bDbContext_Click;
-            // 
             // bBackup
             // 
             bBackup.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             bBackup.ForeColor = Color.Red;
-            bBackup.Location = new Point(724, 64);
+            bBackup.Location = new Point(368, 73);
             bBackup.Name = "bBackup";
-            bBackup.Size = new Size(226, 23);
+            bBackup.Size = new Size(350, 23);
             bBackup.TabIndex = 31;
             bBackup.Text = "Restore Microsoft Backup Files";
             bBackup.UseVisualStyleBackColor = true;
-            bBackup.Visible = false;
             bBackup.Click += bBackup_Click;
             // 
             // bViewOpen
             // 
-            bViewOpen.Location = new Point(888, 174);
+            bViewOpen.Location = new Point(888, 219);
             bViewOpen.Name = "bViewOpen";
             bViewOpen.Size = new Size(75, 23);
             bViewOpen.TabIndex = 30;
@@ -194,7 +226,7 @@
             // 
             // tbViewPath
             // 
-            tbViewPath.Location = new Point(171, 174);
+            tbViewPath.Location = new Point(171, 219);
             tbViewPath.Name = "tbViewPath";
             tbViewPath.ReadOnly = true;
             tbViewPath.Size = new Size(711, 23);
@@ -203,7 +235,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(3, 177);
+            label3.Location = new Point(3, 222);
             label3.Name = "label3";
             label3.Size = new Size(134, 15);
             label3.TabIndex = 28;
@@ -211,7 +243,7 @@
             // 
             // bControllerOpen
             // 
-            bControllerOpen.Location = new Point(888, 145);
+            bControllerOpen.Location = new Point(888, 190);
             bControllerOpen.Name = "bControllerOpen";
             bControllerOpen.Size = new Size(75, 23);
             bControllerOpen.TabIndex = 27;
@@ -221,7 +253,7 @@
             // 
             // tbControllerPath
             // 
-            tbControllerPath.Location = new Point(171, 145);
+            tbControllerPath.Location = new Point(171, 190);
             tbControllerPath.Name = "tbControllerPath";
             tbControllerPath.ReadOnly = true;
             tbControllerPath.Size = new Size(711, 23);
@@ -230,7 +262,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(3, 148);
+            label2.Location = new Point(3, 193);
             label2.Name = "label2";
             label2.Size = new Size(162, 15);
             label2.TabIndex = 25;
@@ -256,19 +288,6 @@
             bBrowse.UseVisualStyleBackColor = true;
             bBrowse.Click += bBrowse_Click;
             // 
-            // bUpdateInterface
-            // 
-            bUpdateInterface.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
-            bUpdateInterface.ForeColor = Color.Red;
-            bUpdateInterface.Location = new Point(368, 64);
-            bUpdateInterface.Name = "bUpdateInterface";
-            bUpdateInterface.Size = new Size(350, 23);
-            bUpdateInterface.TabIndex = 22;
-            bUpdateInterface.Text = "Update Using Service Interface";
-            bUpdateInterface.UseVisualStyleBackColor = true;
-            bUpdateInterface.Visible = false;
-            bUpdateInterface.Click += bUpdateInterface_Click;
-            // 
             // tbUserPath
             // 
             tbUserPath.Location = new Point(130, 6);
@@ -290,7 +309,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(989, 299);
+            ClientSize = new Size(989, 341);
             Controls.Add(pMain);
             Name = "Form1";
             StartPosition = FormStartPosition.CenterScreen;
@@ -298,6 +317,7 @@
             Load += Form1_Load;
             pMain.ResumeLayout(false);
             pMain.PerformLayout();
+            pOther.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -324,5 +344,7 @@
         private Button bUpdateInterface;
         private TextBox tbUserPath;
         private Label label1;
+        private Button bUpdateEntityService;
+        private Panel pOther;
     }
 }
